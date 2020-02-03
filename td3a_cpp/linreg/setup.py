@@ -4,7 +4,7 @@ from Cython.Build import cythonize
 import numpy as np
 
 ext = Extension("cy_regularized_linreg",
-                sources=["cy_regularized_linreg.pyx","cpp_regularized_linreg.cpp"],
+                sources=["cy_regularized_linreg.pyx","cy_regularized_linreg_.cpp"],
                 libraries=["m"],
                 language=["c++"],
                 extra_compile_args=["-std=c++11","-static"])

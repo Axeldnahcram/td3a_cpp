@@ -98,10 +98,10 @@ def get_extension_matmul(name):
 
 def get_extension_linear_reg(name):
     pattern1 = "td3a_cpp.linreg.%s"
-    srcs = ["td3a_cpp.linreg.%s.pyx" % name]
+    srcs = ["td3a_cpp/linreg/%s.pyx" % name]
     args = get_defined_args()
-    if name in ['dot_cython', 'experiment_cython', 'dot_cython_omp']:
-        srcs.extend(['td3a_cpp/tutorial/%s_.cpp' % name])
+    if name in ['cy_regularized_linreg']:
+        srcs.extend(['td3a_cpp/linreg/%s_.cpp' % name])
         args['language'] = "c++"
         args["libraries"] = ["m"]
         args["extra_compile_args"] = ["-std=c++11", "-static"]

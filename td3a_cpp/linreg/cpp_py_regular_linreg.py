@@ -16,15 +16,15 @@ def cpp_py_regular_linreg(X, y, beta_0, alpha, L1_ratio, max_iter, tol):
     print('bulding Cython & C++ finished\n')
 
     
-    import scripts.cy_regularized_linreg as cy
+    from .cy_regularized_linreg import py_regularized_linreg
      
     beta = beta_0
     num_samples, num_features = X.shape
     X_resh = X.reshape((np.prod(X.shape), ))
-    cy.py_regularized_linreg(X_resh, y,
-                                                num_samples, num_features,
-                                                beta,
-                                                alpha, L1_ratio,
-                                                max_iter, tol)
+    py_regularized_linreg(X_resh, y,
+                            num_samples, num_features,
+                            beta,
+                            alpha, L1_ratio,
+                            max_iter, tol)
     
     return beta

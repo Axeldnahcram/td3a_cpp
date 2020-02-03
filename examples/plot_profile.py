@@ -73,7 +73,7 @@ else:
 # how long the program stayed in every function.
 # If a function does not appear, it means it was never executed
 # or too fast to be caught.
-# An HTML report can be generated.
+# An HTML report.ipynb can be generated.
 
 if profiler is not None:
     with open("dot_pyinstrument.html", "w", encoding="utf-8") as f:
