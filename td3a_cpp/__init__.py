@@ -91,14 +91,10 @@ def check_matmul(verbose=1):
     import numpy
     from .matmul import pymatmul
     from .matmul.matmul_cython import (
-        matmul_product, dmatmul_cython_array,
-        dmatmul_cython_array_optim, dmatmul_array,
-        dmatmul_array_16, dmatmul_array_16_sse
+        matmul_product, dmatmul_cython_array
     )
     from .matmul.matmul_cython import (
-        smatmul_cython_array,
-        smatmul_cython_array_optim, smatmul_array,
-        smatmul_array_16, smatmul_array_16_sse
+        smatmul_cython_array
     )
     from .tools import measure_time
     rows = []
@@ -113,11 +109,7 @@ def check_matmul(verbose=1):
         ('pymatmul', pymatmul, 1),
         ('numpy.matmul', numpy.matmul),
         ('matmul_product', matmul_product),
-        ('dmatmul_cython_array', dmatmul_cython_array),
-        ('dmatmul_cython_array_optim', dmatmul_cython_array_optim),
-        ('dmatmul_array', dmatmul_array),
-        ('dmatmul_array_16', dmatmul_array_16),
-        ('dmatmul_array_16_sse', dmatmul_array_16_sse),
+        ('dmatmul_cython_array', dmatmul_cython_array)
     ]
 
     for tu in fcts:
@@ -141,11 +133,7 @@ def check_matmul(verbose=1):
     fcts = [
         ('pymatmul', pymatmul, 1),
         ('numpy.matmul', numpy.matmul),
-        ('smatmul_cython_array', smatmul_cython_array),
-        ('smatmul_cython_array_optim', smatmul_cython_array_optim),
-        ('smatmul_array', smatmul_array),
-        ('smatmul_array_16', smatmul_array_16),
-        ('smatmul_array_16_sse', smatmul_array_16_sse),
+        ('smatmul_cython_array', smatmul_cython_array)
     ]
 
     for tu in fcts:
@@ -162,6 +150,38 @@ def check_matmul(verbose=1):
 
     return rows
 
+def check_linreg(verbose=1):
+    import pprint
+    import numpy as np
+    from .linear_regression import pylinear_reg
+    from .linear_regression.linear_reg_cython import (
+        py_regularized_linreg
+    )
+    from .tools import measure_time
+    rows = []
+
+    # double
+    if verbose > 0:
+        print("\ndouble\n")
+    X = np.random.random(10)
+    y = np.random.random(10)
+    fcts = [
+        ('pylinear_reg', pylinear_reg, 1),
+        ('py_regularized_linreg', py_regularized_linreg)
+    ]
+    for tu in fcts:
+        name, fct = tu[:2]
+        ctx = {'X': X, 'y': y, 'fctlinearreg': fct}
+        if len(tu) == 3:
+            res = measure_time('fctlinearreg(X, y)', ctx, repeat=tu[2])
+        else:
+            res = measure_time('fctlinearreg(X, y)', ctx)
+        res['name'] = name
+        if verbose > 0:
+            pprint.pprint(res)
+        rows.append(res)
+        
+    return rows
 
 def check(verbose=1):
     """
@@ -173,4 +193,5 @@ def check(verbose=1):
     rows = []
     rows.append(check_matmul(verbose))
     rows.append(check_tutorial(verbose))
+    rows.append(check_linreg(verbose))
     return rows

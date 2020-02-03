@@ -92,8 +92,28 @@ def get_extension_matmul(name):
                 cdivision_warnings=True)
 
     ext_modules = []
-    print("############")
-    print(ext)
+    from Cython.Build import cythonize
+    ext_modules.extend(cythonize([ext], compiler_directives=opts))
+    return ext_modules
+
+def get_extension_linear_reg(name):
+    pattern1 = "td3a_cpp.linreg.%s"
+    srcs = ["td3a_cpp.linreg.%s.pyx" % name]
+    args = get_defined_args()
+    if name in ['dot_cython', 'experiment_cython', 'dot_cython_omp']:
+        srcs.extend(['td3a_cpp/tutorial/%s_.cpp' % name])
+        args['language'] = "c++"
+        args["libraries"] = ["m"]
+        args["extra_compile_args"] = ["-std=c++11", "-static"]
+
+    ext = Extension(pattern1 % name, srcs,
+                    include_dirs=[numpy.get_include()],
+                    **args)
+
+    opts = dict(boundscheck=False, cdivision=True,
+                wraparound=False, language_level=3,
+                cdivision_warnings=True)
+
     from Cython.Build import cythonize
     ext_modules.extend(cythonize([ext], compiler_directives=opts))
     return ext_modules
@@ -111,7 +131,8 @@ packages = find_packages(where=here)
 package_dir = {k: os.path.join(here, k.replace(".", "/")) for k in packages}
 package_data = {
     "td3a_cpp.tutorial": ["*.pyx", '*.cpp', '*.h'],
-    "td3a_cpp.matmul": ["*.pyx", '*.cpp']
+    "td3a_cpp.matmul": ["*.pyx", '*.cpp'],
+    "td3a_cpp.linreg":["*.pyx", '*.cpp', '*.hpp', '*.pxd']
 }
 
 try:
@@ -143,6 +164,9 @@ for ext in ['dot_blas_lapack', 'dot_cython',
 
 for ext in ['matmul_cython']:
     ext_modules.extend(get_extension_matmul(ext))
+
+for ext in ['cy_regularized_linreg']:
+    ext_modules.extend(get_extension_linear_reg(ext))
 
 
 setup(name='td3a_cpp',
