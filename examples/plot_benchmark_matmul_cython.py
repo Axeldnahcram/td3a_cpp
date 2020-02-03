@@ -22,7 +22,7 @@ import numpy
 import matplotlib.pyplot as plt
 from pandas import DataFrame, concat
 from td3a_cpp.matmul.matmul_cython import (
-    matmul_product, matmul_cython_array,
+    matmul_product, smatmul_cython_array, dmatmul_cython_array
 )
 from td3a_cpp.matmul.matmulpy import pymatmul
 from td3a_cpp.tools import measure_time_dim
@@ -53,7 +53,7 @@ dfs = [df]
 # ++++++++++++++++++
 #
 
-for fct in [matmul_product, matmul_cython_array]:
+for fct in [matmul_product, dmatmul_cython_array]:
     ctxs = get_vectors(fct, 10000 if fct.__name__ != 'matmul_product' else 1000)
 
     df = DataFrame(list(measure_time_dim('matmul(va, vb)', ctxs, verbose=1)))
@@ -64,6 +64,34 @@ for fct in [matmul_product, matmul_cython_array]:
 #############################
 # Let's display the results
 # +++++++++++++++++++++++++
+
+cc = concat(dfs)
+cc['N'] = cc['x_name']
+
+fig, ax = plt.subplots(1, 2, figsize=(10, 4))
+cc.pivot('N', 'fct', 'average').plot(
+         logy=True, ax=ax[0])
+cc.pivot('N', 'fct', 'average').plot(
+         logy=True, logx=True, ax=ax[1])
+ax[0].set_title("Comparison of cython sdot implementations")
+ax[1].set_title("Comparison of cython sdot implementations")
+
+###################################
+# Same for floats
+# +++++++++++++++
+#
+# Let's for single floats.
+
+dfs = []
+for fct in [numpy.matmul, smatmul_cython_array, matmul_product]:
+    ctxs = get_vectors(fct, 10000 if fct.__name__ != 'matmul_product' else 1000,
+                       dtype=numpy.float32)
+
+    df = DataFrame(list(measure_time_dim('matmul(va, vb)', ctxs, verbose=1)))
+    df['fct'] = fct.__name__
+    dfs.append(df)
+    print(df.tail(n=3))
+
 
 cc = concat(dfs)
 cc['N'] = cc['x_name']
