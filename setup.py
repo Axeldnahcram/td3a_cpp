@@ -76,6 +76,29 @@ def get_extension_tutorial(name):
     ext_modules.extend(cythonize([ext], compiler_directives=opts))
     return ext_modules
 
+def get_extension_matmul(name):
+    pattern1 = "td3a_cpp.matmul.%s"
+    srcs = ["td3a_cpp/matmul/%s.pyx" % name]
+    args = get_defined_args()
+    if name in ['matmul_cython', 'experiment_cython']:
+        print("########################")
+        print(name)
+        srcs.extend(['td3a_cpp/matmul/%s_.cpp' % name])
+        args['language'] = 'c++'
+
+    ext = Extension(pattern1 % name, srcs,
+                    include_dirs=[numpy.get_include()],
+                    **args)
+
+    opts = dict(boundscheck=False, cdivision=True,
+                wraparound=False, language_level=3,
+                cdivision_warnings=True)
+
+    ext_modules = []
+    from Cython.Build import cythonize
+    ext_modules.extend(cythonize([ext], compiler_directives=opts))
+    return ext_modules
+
 
 ######################
 # beginning of setup
@@ -88,7 +111,8 @@ if here == "":
 packages = find_packages(where=here)
 package_dir = {k: os.path.join(here, k.replace(".", "/")) for k in packages}
 package_data = {
-    "td3a_cpp.tutorial": ["*.pyx", '*.cpp', '*.h'],
+    "td3a_cpp.tutorial": ["*.pyx", '*.cpp'],
+    "td3a_cpp.matmul": ["*.pyx", '*.cpp', '*.h']
 }
 
 try:
@@ -117,6 +141,9 @@ ext_modules = []
 for ext in ['dot_blas_lapack', 'dot_cython',
             'experiment_cython', 'dot_cython_omp']:
     ext_modules.extend(get_extension_tutorial(ext))
+
+for ext in ['experiment_cython']:
+    ext_modules.extend(get_extension_matmul(ext))
 
 
 setup(name='td3a_cpp',
