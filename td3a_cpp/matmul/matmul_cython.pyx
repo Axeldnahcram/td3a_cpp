@@ -17,11 +17,11 @@ numpy.import_array()
 
 def matmul_product(va, vb):
     """
-    Python matmul product but in :epkg:`cython` file.
+    Python matrix product 
 
-    :param va: first vector
-    :param vb: second vector
-    :return: matmul product
+    :param va: first matrix
+    :param vb: second matrix
+    :return: matrix product
     """
     l = []
     for i in range(va.shape[0]):
@@ -31,14 +31,14 @@ def matmul_product(va, vb):
 
 def dmatmul_cython_array(const double[::1] va, const double[::1] vb):
     """
-    dot product implemented with C types.
+    dot product implemented with matrix of doubles
 
     :param va: first vector, dtype must be float64
     :param vb: second vector, dtype must be float64
     :return: dot product
     """
     if va.shape[0] != vb.shape[0]:
-        raise ValueError("Vectors must have same shape.")
+        raise ValueError("Matrix must have same shape.")
     cdef vector[double] p
     p.reserve(va.shape[0])
     for i in range(va.shape[0]):
@@ -47,14 +47,14 @@ def dmatmul_cython_array(const double[::1] va, const double[::1] vb):
 
 def smatmul_cython_array(const float[::1] va, const float[::1] vb):
     """
-    dot product implemented with C types.
+    dot product implemented with matrix of floats
 
-    :param va: first vector, dtype must be float64
-    :param vb: second vector, dtype must be float64
+    :param va: first vector, dtype must be float32
+    :param vb: second vector, dtype must be float32
     :return: dot product
     """
     if va.shape[0] != vb.shape[0]:
-        raise ValueError("Vectors must have same shape.")
+        raise ValueError("Matrix must have same shape.")
     cdef vector[double] p
     p.reserve(va.shape[0])
     for i in range(va.shape[0]):

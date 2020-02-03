@@ -1,12 +1,11 @@
 import numpy as np
-from .nv_py_regular_linreg import nv_py_regular_linreg
-from .mp_py_regular_linreg import mp_py_regular_linreg
-from .cpp_py_regular_linreg import cpp_py_regular_linreg
-# import scripts.setup
-import subprocess
+from .nv_py_regular_linreg import nv_regular_linreg
+from .mp_py_regular_linreg import mp_regular_linreg
+from .cpp_py_regular_linreg import cpp_regular_linreg
+from .sklearn_py_regular_linreg import sklearn_regular_linreg
 
 
-class regularizedLinearRegression(object):
+class RegularizedLinearRegression(object):
     def __init__(self, alpha=1.0, L1_ratio=0.5, method='cpp',
                  max_iter=1000, tol=1e-5):
         self.alpha = alpha
@@ -21,8 +20,8 @@ class regularizedLinearRegression(object):
 
     def error_check(self):
 
-        # method
-        if not self.method in ['nav', 'cpp', 'mp']:
+        # method check
+        if not self.method in ['nav', 'cpp', 'mp', 'sk']:
             raise ('error: not proper method selected')
 
     def fit(self, X, y, beta_0=None):
@@ -44,21 +43,25 @@ class regularizedLinearRegression(object):
             self.beta_0 = np.array(beta_0)
 
         if self.method == 'nav':
-            res = nv_py_regular_linreg(
+            res = nv_regular_linreg(
                 X, y, self.beta_0, self.alpha, self.L1_ratio,
                 self.max_iter, self.tol)
 
             return res
 
         if self.method == 'mp':
-            res = mp_py_regular_linreg(
+            res = mp_regular_linreg(
                 X, y, self.beta_0, self.alpha, self.L1_ratio,
                 self.max_iter, self.tol)
 
             return res
 
         if self.method == 'cpp':
-            res = cpp_py_regular_linreg(
+            res = cpp_regular_linreg(
                 X, y, self.beta_0, self.alpha, self.L1_ratio,
                 self.max_iter, self.tol)
+            return res
+
+        if self.method == 'sk':
+            res = sklearn_regular_linreg(X, y)
             return res

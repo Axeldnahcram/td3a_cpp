@@ -1,8 +1,16 @@
 # function file
-# nv_py_regular_linreg.py
+# nv_regular_linreg - Naive Regular LinearRegression
+
 import numpy as np
 
-def nv_py_regular_linreg(X, y, beta, alpha, L1_ratio, max_iter=1000, tol=0.0001, *args, **kwargs):
+
+def nv_regular_linreg(X, y, beta_0, alpha, L1_ratio, max_iter=1000, tol=0.0001, *args, **kwargs):
+    """
+    Naive regular linear regression
+
+    :return: slope of the regression
+    """
+
     def S(z, gamma):
         if np.abs(z) - gamma > 0:
             return np.sign(z)*(np.abs(z)-gamma)
