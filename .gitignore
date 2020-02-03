@@ -6,6 +6,7 @@ build/*
 *egg-info/*
 doc/auto_examples/*
 examples/dot_pyinstrument.html
+
 td3a_cpp/tutorial/*.c
 td3a_cpp/tutorial/*.pyd
 td3a_cpp/tutorial/*.so
@@ -13,8 +14,14 @@ td3a_cpp/tutorial/dot_cython.cpp
 td3a_cpp/tutorial/dot_blas_lapack.cpp
 td3a_cpp/tutorial/experiment_cython.cpp
 td3a_cpp/tutorial/dot_cython_omp.cpp
+
 td3a_cpp/linreg/*.so
 td3a_cpp/linreg/cy_regularized_linreg.cpp
+
 td3a_cpp/matmul/*.cpp
 td3a_cpp/matmul/*.so
+
+td3a_cpp/random_forest/*.cpp
+td3a_cpp/random_forest/*.so
+
 

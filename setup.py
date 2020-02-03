@@ -118,6 +118,26 @@ def get_extension_linear_reg(name):
     ext_modules.extend(cythonize([ext], compiler_directives=opts))
     return ext_modules
 
+def get_extension_random_forest(name):
+    pattern1 = "td3a_cpp.random_forest.%s"
+    srcs = ["td3a_cpp/random_forest/%s.pyx" % name]
+    args = get_defined_args()
+    if name in ['random_forest']:
+        args['language'] = 'c++'
+
+    ext = Extension(pattern1 % name, srcs,
+                    include_dirs=[numpy.get_include()],
+                    **args)
+
+    opts = dict(boundscheck=False, cdivision=True,
+                wraparound=False, language_level=3,
+                cdivision_warnings=True)
+
+    ext_modules = []
+    from Cython.Build import cythonize
+    ext_modules.extend(cythonize([ext], compiler_directives=opts))
+    return ext_modules
+
 
 ######################
 # beginning of setup
@@ -132,7 +152,8 @@ package_dir = {k: os.path.join(here, k.replace(".", "/")) for k in packages}
 package_data = {
     "td3a_cpp.tutorial": ["*.pyx", '*.cpp', '*.h'],
     "td3a_cpp.matmul": ["*.pyx", '*.cpp'],
-    "td3a_cpp.linreg":["*.pyx", '*.cpp', '*.hpp', '*.pxd']
+    "td3a_cpp.linreg": ["*.pyx", '*.cpp', '*.hpp', '*.pxd'],
+    "td3a_cpp.random_forest": ["*.pyx", '*.cpp']
 }
 
 try:
@@ -167,6 +188,9 @@ for ext in ['matmul_cython']:
 
 for ext in ['cy_regularized_linreg']:
     ext_modules.extend(get_extension_linear_reg(ext))
+
+for ext in ["random_forest"]:
+    ext_modules.extend(get_extension_random_forest(ext))
 
 
 setup(name='td3a_cpp',
