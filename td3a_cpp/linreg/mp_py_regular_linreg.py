@@ -17,10 +17,10 @@ def deco(j, X, y, N, p, beta, alpha, L1_ratio):
                      , alpha*L1_ratio)/(1+alpha*(1-L1_ratio))
 
 
-def mp_py_regular_linreg(X, y, beta_0, alpha, L1_ratio, max_iter=50, tol=0.0001):
+def mp_py_regular_linreg(X, y, beta, alpha, L1_ratio, max_iter=50, tol=0.0001, *args, **kwargs):
     
     N, p = X.shape
-    beta = beta_0.copy()
+    beta = beta.copy()
     b_new = np.zeros(p)
     
     for itr in range(max_iter):

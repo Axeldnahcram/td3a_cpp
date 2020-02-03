@@ -6,14 +6,10 @@ import Cython
 import pyximport; 
 pyximport.install()
 
-def cpp_py_regular_linreg(X, y, beta_0, alpha, L1_ratio, max_iter, tol):
+def cpp_py_regular_linreg(X, y, beta_0, alpha, L1_ratio, max_iter, tol, *args, **kwargs):
     
     #subprocess.Popen(['python', 'setup.py', 'clean'])
     #subprocess.Popen(['python', 'setup.py', '-q', 'build_ext', '--inplace'])
-    bashCommand = "cd scripts && python setup.py clean && python setup.py -q build_ext --inplace"
-    print('starting bulding Cython & C++\n')
-    os.system(bashCommand)
-    print('bulding Cython & C++ finished\n')
 
     
     from .cy_regularized_linreg import py_regularized_linreg

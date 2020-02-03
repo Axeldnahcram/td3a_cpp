@@ -2,7 +2,7 @@
 # nv_py_regular_linreg.py
 import numpy as np
 
-def nv_py_regular_linreg(X, y, beta_0, alpha, L1_ratio, max_iter=1000, tol=0.0001):
+def nv_py_regular_linreg(X, y, beta, alpha, L1_ratio, max_iter=1000, tol=0.0001, *args, **kwargs):
     def S(z, gamma):
         if np.abs(z) - gamma > 0:
             return np.sign(z)*(np.abs(z)-gamma)
@@ -10,7 +10,7 @@ def nv_py_regular_linreg(X, y, beta_0, alpha, L1_ratio, max_iter=1000, tol=0.000
             return 0
 
     N, p = X.shape
-    beta = beta_0.copy()
+    beta = beta.copy()
     b_new = np.zeros(p)
     for itr in range(max_iter):
         for j in range(p):
