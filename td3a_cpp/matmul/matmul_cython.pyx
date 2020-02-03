@@ -9,6 +9,7 @@ from libc.math cimport NAN
 from libcpp.vector cimport vector
 
 
+
 import numpy
 cimport numpy
 cimport cython
@@ -28,13 +29,13 @@ def matmul_product(va, vb):
     return l
 
 
-def dmatmul_cython_array(const double[::1] va, const double[::1] vb):
+def matmul_cython_array(const double[::1] va, const double[::1] vb):
     """
-    matmul product implemented with C types.
+    dot product implemented with C types.
 
     :param va: first vector, dtype must be float64
     :param vb: second vector, dtype must be float64
-    :return: matmul product
+    :return: dot product
     """
     if va.shape[0] != vb.shape[0]:
         raise ValueError("Vectors must have same shape.")
@@ -43,22 +44,3 @@ def dmatmul_cython_array(const double[::1] va, const double[::1] vb):
     for i in range(va.shape[0]):
         p.push_back(va[i] * vb[i])
     return p
-
-
-def smatmul_cython_array(const float[::1] va, const float[::1] vb):
-    """
-    matmul product implemented with C types.
-
-    :param va: first vector, dtype must be float32
-    :param vb: second vector, dtype must be float32
-    :return: matmul product
-    """
-    if va.shape[0] != vb.shape[0]:
-        raise ValueError("Vectors must have same shape.")
-    cdef vector[float] p
-    p.reserve(va.shape[0])
-    for i in range(va.shape[0]):
-        p.push_back(va[i] * vb[i])
-    return p
-
-

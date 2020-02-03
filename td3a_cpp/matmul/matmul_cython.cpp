@@ -1975,9 +1975,6 @@ static int __Pyx_ValidateAndInit_memviewslice(
 /* ObjectToMemviewSlice.proto */
 static CYTHON_INLINE __Pyx_memviewslice __Pyx_PyObject_to_MemoryviewSlice_dc_double__const__(PyObject *, int writable_flag);
 
-/* ObjectToMemviewSlice.proto */
-static CYTHON_INLINE __Pyx_memviewslice __Pyx_PyObject_to_MemoryviewSlice_dc_float__const__(PyObject *, int writable_flag);
-
 /* CIntToPy.proto */
 static CYTHON_INLINE PyObject* __Pyx_PyInt_From_long(long value);
 
@@ -2216,7 +2213,6 @@ static PyObject *indirect_contiguous = 0;
 static int __pyx_memoryview_thread_locks_used;
 static PyThread_type_lock __pyx_memoryview_thread_locks[8];
 static PyObject *__pyx_convert_vector_to_py_double(const std::vector<double>  &); /*proto*/
-static PyObject *__pyx_convert_vector_to_py_float(const std::vector<float>  &); /*proto*/
 static struct __pyx_array_obj *__pyx_array_new(PyObject *, Py_ssize_t, char *, char *, char *); /*proto*/
 static void *__pyx_align_pointer(void *, size_t); /*proto*/
 static PyObject *__pyx_memoryview_new(PyObject *, int, int, __Pyx_TypeInfo *); /*proto*/
@@ -2251,7 +2247,6 @@ static void __pyx_memoryview_slice_assign_scalar(__Pyx_memviewslice *, int, size
 static void __pyx_memoryview__slice_assign_scalar(char *, Py_ssize_t *, Py_ssize_t *, int, size_t, void *); /*proto*/
 static PyObject *__pyx_unpickle_Enum__set_state(struct __pyx_MemviewEnum_obj *, PyObject *); /*proto*/
 static __Pyx_TypeInfo __Pyx_TypeInfo_double__const__ = { "const double", NULL, sizeof(double const ), { 0 }, 0, 'R', 0, 0 };
-static __Pyx_TypeInfo __Pyx_TypeInfo_float__const__ = { "const float", NULL, sizeof(float const ), { 0 }, 0, 'R', 0, 0 };
 #define __Pyx_MODULE_NAME "td3a_cpp.matmul.matmul_cython"
 extern int __pyx_module_is_main_td3a_cpp__matmul__matmul_cython;
 int __pyx_module_is_main_td3a_cpp__matmul__matmul_cython = 0;
@@ -2337,8 +2332,7 @@ static const char __pyx_k_setstate_cython[] = "__setstate_cython__";
 static const char __pyx_k_pyx_unpickle_Enum[] = "__pyx_unpickle_Enum";
 static const char __pyx_k_cline_in_traceback[] = "cline_in_traceback";
 static const char __pyx_k_strided_and_direct[] = "<strided and direct>";
-static const char __pyx_k_dmatmul_cython_array[] = "dmatmul_cython_array";
-static const char __pyx_k_smatmul_cython_array[] = "smatmul_cython_array";
+static const char __pyx_k_matmul_cython_array[] = "matmul_cython_array";
 static const char __pyx_k_strided_and_indirect[] = "<strided and indirect>";
 static const char __pyx_k_contiguous_and_direct[] = "<contiguous and direct>";
 static const char __pyx_k_MemoryView_of_r_object[] = "<MemoryView of %r object>";
@@ -2412,7 +2406,6 @@ static PyObject *__pyx_n_s_cline_in_traceback;
 static PyObject *__pyx_kp_s_contiguous_and_direct;
 static PyObject *__pyx_kp_s_contiguous_and_indirect;
 static PyObject *__pyx_n_s_dict;
-static PyObject *__pyx_n_s_dmatmul_cython_array;
 static PyObject *__pyx_n_s_dtype_is_object;
 static PyObject *__pyx_n_s_encode;
 static PyObject *__pyx_n_s_enumerate;
@@ -2430,6 +2423,7 @@ static PyObject *__pyx_n_s_itemsize;
 static PyObject *__pyx_kp_s_itemsize_0_for_cython_array;
 static PyObject *__pyx_n_s_l;
 static PyObject *__pyx_n_s_main;
+static PyObject *__pyx_n_s_matmul_cython_array;
 static PyObject *__pyx_n_s_matmul_product;
 static PyObject *__pyx_n_s_memview;
 static PyObject *__pyx_n_s_mode;
@@ -2463,7 +2457,6 @@ static PyObject *__pyx_n_s_setstate;
 static PyObject *__pyx_n_s_setstate_cython;
 static PyObject *__pyx_n_s_shape;
 static PyObject *__pyx_n_s_size;
-static PyObject *__pyx_n_s_smatmul_cython_array;
 static PyObject *__pyx_n_s_start;
 static PyObject *__pyx_n_s_step;
 static PyObject *__pyx_n_s_stop;
@@ -2483,8 +2476,7 @@ static PyObject *__pyx_n_s_update;
 static PyObject *__pyx_n_s_va;
 static PyObject *__pyx_n_s_vb;
 static PyObject *__pyx_pf_8td3a_cpp_6matmul_13matmul_cython_matmul_product(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_va, PyObject *__pyx_v_vb); /* proto */
-static PyObject *__pyx_pf_8td3a_cpp_6matmul_13matmul_cython_2dmatmul_cython_array(CYTHON_UNUSED PyObject *__pyx_self, __Pyx_memviewslice __pyx_v_va, __Pyx_memviewslice __pyx_v_vb); /* proto */
-static PyObject *__pyx_pf_8td3a_cpp_6matmul_13matmul_cython_4smatmul_cython_array(CYTHON_UNUSED PyObject *__pyx_self, __Pyx_memviewslice __pyx_v_va, __Pyx_memviewslice __pyx_v_vb); /* proto */
+static PyObject *__pyx_pf_8td3a_cpp_6matmul_13matmul_cython_2matmul_cython_array(CYTHON_UNUSED PyObject *__pyx_self, __Pyx_memviewslice __pyx_v_va, __Pyx_memviewslice __pyx_v_vb); /* proto */
 static int __pyx_pf_5numpy_7ndarray___getbuffer__(PyArrayObject *__pyx_v_self, Py_buffer *__pyx_v_info, int __pyx_v_flags); /* proto */
 static void __pyx_pf_5numpy_7ndarray_2__releasebuffer__(PyArrayObject *__pyx_v_self, Py_buffer *__pyx_v_info); /* proto */
 static int __pyx_array___pyx_pf_15View_dot_MemoryView_5array___cinit__(struct __pyx_array_obj *__pyx_v_self, PyObject *__pyx_v_shape, Py_ssize_t __pyx_v_itemsize, PyObject *__pyx_v_format, PyObject *__pyx_v_mode, int __pyx_v_allocate_buffer); /* proto */
@@ -2566,19 +2558,17 @@ static PyObject *__pyx_tuple__26;
 static PyObject *__pyx_tuple__27;
 static PyObject *__pyx_tuple__29;
 static PyObject *__pyx_tuple__31;
+static PyObject *__pyx_tuple__32;
 static PyObject *__pyx_tuple__33;
 static PyObject *__pyx_tuple__34;
 static PyObject *__pyx_tuple__35;
 static PyObject *__pyx_tuple__36;
-static PyObject *__pyx_tuple__37;
-static PyObject *__pyx_tuple__38;
 static PyObject *__pyx_codeobj__28;
 static PyObject *__pyx_codeobj__30;
-static PyObject *__pyx_codeobj__32;
-static PyObject *__pyx_codeobj__39;
+static PyObject *__pyx_codeobj__37;
 /* Late includes */
 
-/* "td3a_cpp/matmul/matmul_cython.pyx":17
+/* "td3a_cpp/matmul/matmul_cython.pyx":18
  * numpy.import_array()
  * 
  * def matmul_product(va, vb):             # <<<<<<<<<<<<<<
@@ -2619,11 +2609,11 @@ static PyObject *__pyx_pw_8td3a_cpp_6matmul_13matmul_cython_1matmul_product(PyOb
         case  1:
         if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_vb)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("matmul_product", 1, 2, 2, 1); __PYX_ERR(0, 17, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("matmul_product", 1, 2, 2, 1); __PYX_ERR(0, 18, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "matmul_product") < 0)) __PYX_ERR(0, 17, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "matmul_product") < 0)) __PYX_ERR(0, 18, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 2) {
       goto __pyx_L5_argtuple_error;
@@ -2636,7 +2626,7 @@ static PyObject *__pyx_pw_8td3a_cpp_6matmul_13matmul_cython_1matmul_product(PyOb
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("matmul_product", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 17, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("matmul_product", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 18, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("td3a_cpp.matmul.matmul_cython.matmul_product", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -2663,40 +2653,40 @@ static PyObject *__pyx_pf_8td3a_cpp_6matmul_13matmul_cython_matmul_product(CYTHO
   int __pyx_t_7;
   __Pyx_RefNannySetupContext("matmul_product", 0);
 
-  /* "td3a_cpp/matmul/matmul_cython.pyx":25
+  /* "td3a_cpp/matmul/matmul_cython.pyx":26
  *     :return: matmul product
  *     """
  *     l = []             # <<<<<<<<<<<<<<
  *     for i in range(va.shape[0]):
  *         l.append(va[i] * vb[i])
  */
-  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 25, __pyx_L1_error)
+  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 26, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v_l = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "td3a_cpp/matmul/matmul_cython.pyx":26
+  /* "td3a_cpp/matmul/matmul_cython.pyx":27
  *     """
  *     l = []
  *     for i in range(va.shape[0]):             # <<<<<<<<<<<<<<
  *         l.append(va[i] * vb[i])
  *     return l
  */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_va, __pyx_n_s_shape); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 26, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_va, __pyx_n_s_shape); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 27, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_GetItemInt(__pyx_t_1, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 26, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_GetItemInt(__pyx_t_1, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 27, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_builtin_range, __pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 26, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_builtin_range, __pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 27, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   if (likely(PyList_CheckExact(__pyx_t_1)) || PyTuple_CheckExact(__pyx_t_1)) {
     __pyx_t_2 = __pyx_t_1; __Pyx_INCREF(__pyx_t_2); __pyx_t_3 = 0;
     __pyx_t_4 = NULL;
   } else {
-    __pyx_t_3 = -1; __pyx_t_2 = PyObject_GetIter(__pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 26, __pyx_L1_error)
+    __pyx_t_3 = -1; __pyx_t_2 = PyObject_GetIter(__pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 27, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_4 = Py_TYPE(__pyx_t_2)->tp_iternext; if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 26, __pyx_L1_error)
+    __pyx_t_4 = Py_TYPE(__pyx_t_2)->tp_iternext; if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 27, __pyx_L1_error)
   }
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   for (;;) {
@@ -2704,17 +2694,17 @@ static PyObject *__pyx_pf_8td3a_cpp_6matmul_13matmul_cython_matmul_product(CYTHO
       if (likely(PyList_CheckExact(__pyx_t_2))) {
         if (__pyx_t_3 >= PyList_GET_SIZE(__pyx_t_2)) break;
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_1 = PyList_GET_ITEM(__pyx_t_2, __pyx_t_3); __Pyx_INCREF(__pyx_t_1); __pyx_t_3++; if (unlikely(0 < 0)) __PYX_ERR(0, 26, __pyx_L1_error)
+        __pyx_t_1 = PyList_GET_ITEM(__pyx_t_2, __pyx_t_3); __Pyx_INCREF(__pyx_t_1); __pyx_t_3++; if (unlikely(0 < 0)) __PYX_ERR(0, 27, __pyx_L1_error)
         #else
-        __pyx_t_1 = PySequence_ITEM(__pyx_t_2, __pyx_t_3); __pyx_t_3++; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 26, __pyx_L1_error)
+        __pyx_t_1 = PySequence_ITEM(__pyx_t_2, __pyx_t_3); __pyx_t_3++; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 27, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_1);
         #endif
       } else {
         if (__pyx_t_3 >= PyTuple_GET_SIZE(__pyx_t_2)) break;
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_1 = PyTuple_GET_ITEM(__pyx_t_2, __pyx_t_3); __Pyx_INCREF(__pyx_t_1); __pyx_t_3++; if (unlikely(0 < 0)) __PYX_ERR(0, 26, __pyx_L1_error)
+        __pyx_t_1 = PyTuple_GET_ITEM(__pyx_t_2, __pyx_t_3); __Pyx_INCREF(__pyx_t_1); __pyx_t_3++; if (unlikely(0 < 0)) __PYX_ERR(0, 27, __pyx_L1_error)
         #else
-        __pyx_t_1 = PySequence_ITEM(__pyx_t_2, __pyx_t_3); __pyx_t_3++; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 26, __pyx_L1_error)
+        __pyx_t_1 = PySequence_ITEM(__pyx_t_2, __pyx_t_3); __pyx_t_3++; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 27, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_1);
         #endif
       }
@@ -2724,7 +2714,7 @@ static PyObject *__pyx_pf_8td3a_cpp_6matmul_13matmul_cython_matmul_product(CYTHO
         PyObject* exc_type = PyErr_Occurred();
         if (exc_type) {
           if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-          else __PYX_ERR(0, 26, __pyx_L1_error)
+          else __PYX_ERR(0, 27, __pyx_L1_error)
         }
         break;
       }
@@ -2733,25 +2723,25 @@ static PyObject *__pyx_pf_8td3a_cpp_6matmul_13matmul_cython_matmul_product(CYTHO
     __Pyx_XDECREF_SET(__pyx_v_i, __pyx_t_1);
     __pyx_t_1 = 0;
 
-    /* "td3a_cpp/matmul/matmul_cython.pyx":27
+    /* "td3a_cpp/matmul/matmul_cython.pyx":28
  *     l = []
  *     for i in range(va.shape[0]):
  *         l.append(va[i] * vb[i])             # <<<<<<<<<<<<<<
  *     return l
  * 
  */
-    __pyx_t_1 = __Pyx_PyObject_GetItem(__pyx_v_va, __pyx_v_i); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 27, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_GetItem(__pyx_v_va, __pyx_v_i); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 28, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_5 = __Pyx_PyObject_GetItem(__pyx_v_vb, __pyx_v_i); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 27, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyObject_GetItem(__pyx_v_vb, __pyx_v_i); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 28, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
-    __pyx_t_6 = PyNumber_Multiply(__pyx_t_1, __pyx_t_5); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 27, __pyx_L1_error)
+    __pyx_t_6 = PyNumber_Multiply(__pyx_t_1, __pyx_t_5); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 28, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-    __pyx_t_7 = __Pyx_PyList_Append(__pyx_v_l, __pyx_t_6); if (unlikely(__pyx_t_7 == ((int)-1))) __PYX_ERR(0, 27, __pyx_L1_error)
+    __pyx_t_7 = __Pyx_PyList_Append(__pyx_v_l, __pyx_t_6); if (unlikely(__pyx_t_7 == ((int)-1))) __PYX_ERR(0, 28, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
 
-    /* "td3a_cpp/matmul/matmul_cython.pyx":26
+    /* "td3a_cpp/matmul/matmul_cython.pyx":27
  *     """
  *     l = []
  *     for i in range(va.shape[0]):             # <<<<<<<<<<<<<<
@@ -2761,7 +2751,7 @@ static PyObject *__pyx_pf_8td3a_cpp_6matmul_13matmul_cython_matmul_product(CYTHO
   }
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "td3a_cpp/matmul/matmul_cython.pyx":28
+  /* "td3a_cpp/matmul/matmul_cython.pyx":29
  *     for i in range(va.shape[0]):
  *         l.append(va[i] * vb[i])
  *     return l             # <<<<<<<<<<<<<<
@@ -2773,7 +2763,7 @@ static PyObject *__pyx_pf_8td3a_cpp_6matmul_13matmul_cython_matmul_product(CYTHO
   __pyx_r = __pyx_v_l;
   goto __pyx_L0;
 
-  /* "td3a_cpp/matmul/matmul_cython.pyx":17
+  /* "td3a_cpp/matmul/matmul_cython.pyx":18
  * numpy.import_array()
  * 
  * def matmul_product(va, vb):             # <<<<<<<<<<<<<<
@@ -2797,24 +2787,24 @@ static PyObject *__pyx_pf_8td3a_cpp_6matmul_13matmul_cython_matmul_product(CYTHO
   return __pyx_r;
 }
 
-/* "td3a_cpp/matmul/matmul_cython.pyx":31
+/* "td3a_cpp/matmul/matmul_cython.pyx":32
  * 
  * 
- * def dmatmul_cython_array(const double[::1] va, const double[::1] vb):             # <<<<<<<<<<<<<<
+ * def matmul_cython_array(const double[::1] va, const double[::1] vb):             # <<<<<<<<<<<<<<
  *     """
- *     matmul product implemented with C types.
+ *     dot product implemented with C types.
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_8td3a_cpp_6matmul_13matmul_cython_3dmatmul_cython_array(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static char __pyx_doc_8td3a_cpp_6matmul_13matmul_cython_2dmatmul_cython_array[] = "\n    matmul product implemented with C types.\n\n    :param va: first vector, dtype must be float64\n    :param vb: second vector, dtype must be float64\n    :return: matmul product\n    ";
-static PyMethodDef __pyx_mdef_8td3a_cpp_6matmul_13matmul_cython_3dmatmul_cython_array = {"dmatmul_cython_array", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_8td3a_cpp_6matmul_13matmul_cython_3dmatmul_cython_array, METH_VARARGS|METH_KEYWORDS, __pyx_doc_8td3a_cpp_6matmul_13matmul_cython_2dmatmul_cython_array};
-static PyObject *__pyx_pw_8td3a_cpp_6matmul_13matmul_cython_3dmatmul_cython_array(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static PyObject *__pyx_pw_8td3a_cpp_6matmul_13matmul_cython_3matmul_cython_array(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static char __pyx_doc_8td3a_cpp_6matmul_13matmul_cython_2matmul_cython_array[] = "\n    dot product implemented with C types.\n\n    :param va: first vector, dtype must be float64\n    :param vb: second vector, dtype must be float64\n    :return: dot product\n    ";
+static PyMethodDef __pyx_mdef_8td3a_cpp_6matmul_13matmul_cython_3matmul_cython_array = {"matmul_cython_array", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_8td3a_cpp_6matmul_13matmul_cython_3matmul_cython_array, METH_VARARGS|METH_KEYWORDS, __pyx_doc_8td3a_cpp_6matmul_13matmul_cython_2matmul_cython_array};
+static PyObject *__pyx_pw_8td3a_cpp_6matmul_13matmul_cython_3matmul_cython_array(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   __Pyx_memviewslice __pyx_v_va = { 0, 0, { 0 }, { 0 }, { 0 } };
   __Pyx_memviewslice __pyx_v_vb = { 0, 0, { 0 }, { 0 }, { 0 } };
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
-  __Pyx_RefNannySetupContext("dmatmul_cython_array (wrapper)", 0);
+  __Pyx_RefNannySetupContext("matmul_cython_array (wrapper)", 0);
   {
     static PyObject **__pyx_pyargnames[] = {&__pyx_n_s_va,&__pyx_n_s_vb,0};
     PyObject* values[2] = {0,0};
@@ -2838,11 +2828,11 @@ static PyObject *__pyx_pw_8td3a_cpp_6matmul_13matmul_cython_3dmatmul_cython_arra
         case  1:
         if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_vb)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("dmatmul_cython_array", 1, 2, 2, 1); __PYX_ERR(0, 31, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("matmul_cython_array", 1, 2, 2, 1); __PYX_ERR(0, 32, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "dmatmul_cython_array") < 0)) __PYX_ERR(0, 31, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "matmul_cython_array") < 0)) __PYX_ERR(0, 32, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 2) {
       goto __pyx_L5_argtuple_error;
@@ -2850,25 +2840,25 @@ static PyObject *__pyx_pw_8td3a_cpp_6matmul_13matmul_cython_3dmatmul_cython_arra
       values[0] = PyTuple_GET_ITEM(__pyx_args, 0);
       values[1] = PyTuple_GET_ITEM(__pyx_args, 1);
     }
-    __pyx_v_va = __Pyx_PyObject_to_MemoryviewSlice_dc_double__const__(values[0], 0); if (unlikely(!__pyx_v_va.memview)) __PYX_ERR(0, 31, __pyx_L3_error)
-    __pyx_v_vb = __Pyx_PyObject_to_MemoryviewSlice_dc_double__const__(values[1], 0); if (unlikely(!__pyx_v_vb.memview)) __PYX_ERR(0, 31, __pyx_L3_error)
+    __pyx_v_va = __Pyx_PyObject_to_MemoryviewSlice_dc_double__const__(values[0], 0); if (unlikely(!__pyx_v_va.memview)) __PYX_ERR(0, 32, __pyx_L3_error)
+    __pyx_v_vb = __Pyx_PyObject_to_MemoryviewSlice_dc_double__const__(values[1], 0); if (unlikely(!__pyx_v_vb.memview)) __PYX_ERR(0, 32, __pyx_L3_error)
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("dmatmul_cython_array", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 31, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("matmul_cython_array", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 32, __pyx_L3_error)
   __pyx_L3_error:;
-  __Pyx_AddTraceback("td3a_cpp.matmul.matmul_cython.dmatmul_cython_array", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("td3a_cpp.matmul.matmul_cython.matmul_cython_array", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_8td3a_cpp_6matmul_13matmul_cython_2dmatmul_cython_array(__pyx_self, __pyx_v_va, __pyx_v_vb);
+  __pyx_r = __pyx_pf_8td3a_cpp_6matmul_13matmul_cython_2matmul_cython_array(__pyx_self, __pyx_v_va, __pyx_v_vb);
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_8td3a_cpp_6matmul_13matmul_cython_2dmatmul_cython_array(CYTHON_UNUSED PyObject *__pyx_self, __Pyx_memviewslice __pyx_v_va, __Pyx_memviewslice __pyx_v_vb) {
+static PyObject *__pyx_pf_8td3a_cpp_6matmul_13matmul_cython_2matmul_cython_array(CYTHON_UNUSED PyObject *__pyx_self, __Pyx_memviewslice __pyx_v_va, __Pyx_memviewslice __pyx_v_vb) {
   std::vector<double>  __pyx_v_p;
   Py_ssize_t __pyx_v_i;
   PyObject *__pyx_r = NULL;
@@ -2880,10 +2870,10 @@ static PyObject *__pyx_pf_8td3a_cpp_6matmul_13matmul_cython_2dmatmul_cython_arra
   Py_ssize_t __pyx_t_5;
   Py_ssize_t __pyx_t_6;
   Py_ssize_t __pyx_t_7;
-  __Pyx_RefNannySetupContext("dmatmul_cython_array", 0);
+  __Pyx_RefNannySetupContext("matmul_cython_array", 0);
 
-  /* "td3a_cpp/matmul/matmul_cython.pyx":39
- *     :return: matmul product
+  /* "td3a_cpp/matmul/matmul_cython.pyx":40
+ *     :return: dot product
  *     """
  *     if va.shape[0] != vb.shape[0]:             # <<<<<<<<<<<<<<
  *         raise ValueError("Vectors must have same shape.")
@@ -2892,21 +2882,21 @@ static PyObject *__pyx_pf_8td3a_cpp_6matmul_13matmul_cython_2dmatmul_cython_arra
   __pyx_t_1 = (((__pyx_v_va.shape[0]) != (__pyx_v_vb.shape[0])) != 0);
   if (unlikely(__pyx_t_1)) {
 
-    /* "td3a_cpp/matmul/matmul_cython.pyx":40
+    /* "td3a_cpp/matmul/matmul_cython.pyx":41
  *     """
  *     if va.shape[0] != vb.shape[0]:
  *         raise ValueError("Vectors must have same shape.")             # <<<<<<<<<<<<<<
  *     cdef vector[double] p
  *     p.reserve(va.shape[0])
  */
-    __pyx_t_2 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple_, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 40, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple_, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 41, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_Raise(__pyx_t_2, 0, 0, 0);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __PYX_ERR(0, 40, __pyx_L1_error)
+    __PYX_ERR(0, 41, __pyx_L1_error)
 
-    /* "td3a_cpp/matmul/matmul_cython.pyx":39
- *     :return: matmul product
+    /* "td3a_cpp/matmul/matmul_cython.pyx":40
+ *     :return: dot product
  *     """
  *     if va.shape[0] != vb.shape[0]:             # <<<<<<<<<<<<<<
  *         raise ValueError("Vectors must have same shape.")
@@ -2914,7 +2904,7 @@ static PyObject *__pyx_pf_8td3a_cpp_6matmul_13matmul_cython_2dmatmul_cython_arra
  */
   }
 
-  /* "td3a_cpp/matmul/matmul_cython.pyx":42
+  /* "td3a_cpp/matmul/matmul_cython.pyx":43
  *         raise ValueError("Vectors must have same shape.")
  *     cdef vector[double] p
  *     p.reserve(va.shape[0])             # <<<<<<<<<<<<<<
@@ -2923,7 +2913,7 @@ static PyObject *__pyx_pf_8td3a_cpp_6matmul_13matmul_cython_2dmatmul_cython_arra
  */
   __pyx_v_p.reserve((__pyx_v_va.shape[0]));
 
-  /* "td3a_cpp/matmul/matmul_cython.pyx":43
+  /* "td3a_cpp/matmul/matmul_cython.pyx":44
  *     cdef vector[double] p
  *     p.reserve(va.shape[0])
  *     for i in range(va.shape[0]):             # <<<<<<<<<<<<<<
@@ -2935,12 +2925,11 @@ static PyObject *__pyx_pf_8td3a_cpp_6matmul_13matmul_cython_2dmatmul_cython_arra
   for (__pyx_t_5 = 0; __pyx_t_5 < __pyx_t_4; __pyx_t_5+=1) {
     __pyx_v_i = __pyx_t_5;
 
-    /* "td3a_cpp/matmul/matmul_cython.pyx":44
+    /* "td3a_cpp/matmul/matmul_cython.pyx":45
  *     p.reserve(va.shape[0])
  *     for i in range(va.shape[0]):
  *         p.push_back(va[i] * vb[i])             # <<<<<<<<<<<<<<
  *     return p
- * 
  */
     __pyx_t_6 = __pyx_v_i;
     __pyx_t_7 = __pyx_v_i;
@@ -2948,226 +2937,34 @@ static PyObject *__pyx_pf_8td3a_cpp_6matmul_13matmul_cython_2dmatmul_cython_arra
       __pyx_v_p.push_back(((*((double const  *) ( /* dim=0 */ ((char *) (((double const  *) __pyx_v_va.data) + __pyx_t_6)) ))) * (*((double const  *) ( /* dim=0 */ ((char *) (((double const  *) __pyx_v_vb.data) + __pyx_t_7)) )))));
     } catch(...) {
       __Pyx_CppExn2PyErr();
-      __PYX_ERR(0, 44, __pyx_L1_error)
+      __PYX_ERR(0, 45, __pyx_L1_error)
     }
   }
 
-  /* "td3a_cpp/matmul/matmul_cython.pyx":45
+  /* "td3a_cpp/matmul/matmul_cython.pyx":46
  *     for i in range(va.shape[0]):
  *         p.push_back(va[i] * vb[i])
  *     return p             # <<<<<<<<<<<<<<
- * 
- * 
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_2 = __pyx_convert_vector_to_py_double(__pyx_v_p); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 45, __pyx_L1_error)
+  __pyx_t_2 = __pyx_convert_vector_to_py_double(__pyx_v_p); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 46, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_r = __pyx_t_2;
   __pyx_t_2 = 0;
   goto __pyx_L0;
 
-  /* "td3a_cpp/matmul/matmul_cython.pyx":31
+  /* "td3a_cpp/matmul/matmul_cython.pyx":32
  * 
  * 
- * def dmatmul_cython_array(const double[::1] va, const double[::1] vb):             # <<<<<<<<<<<<<<
+ * def matmul_cython_array(const double[::1] va, const double[::1] vb):             # <<<<<<<<<<<<<<
  *     """
- *     matmul product implemented with C types.
+ *     dot product implemented with C types.
  */
 
   /* function exit code */
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_2);
-  __Pyx_AddTraceback("td3a_cpp.matmul.matmul_cython.dmatmul_cython_array", __pyx_clineno, __pyx_lineno, __pyx_filename);
-  __pyx_r = NULL;
-  __pyx_L0:;
-  __PYX_XDEC_MEMVIEW(&__pyx_v_va, 1);
-  __PYX_XDEC_MEMVIEW(&__pyx_v_vb, 1);
-  __Pyx_XGIVEREF(__pyx_r);
-  __Pyx_RefNannyFinishContext();
-  return __pyx_r;
-}
-
-/* "td3a_cpp/matmul/matmul_cython.pyx":48
- * 
- * 
- * def smatmul_cython_array(const float[::1] va, const float[::1] vb):             # <<<<<<<<<<<<<<
- *     """
- *     matmul product implemented with C types.
- */
-
-/* Python wrapper */
-static PyObject *__pyx_pw_8td3a_cpp_6matmul_13matmul_cython_5smatmul_cython_array(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static char __pyx_doc_8td3a_cpp_6matmul_13matmul_cython_4smatmul_cython_array[] = "\n    matmul product implemented with C types.\n\n    :param va: first vector, dtype must be float32\n    :param vb: second vector, dtype must be float32\n    :return: matmul product\n    ";
-static PyMethodDef __pyx_mdef_8td3a_cpp_6matmul_13matmul_cython_5smatmul_cython_array = {"smatmul_cython_array", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_8td3a_cpp_6matmul_13matmul_cython_5smatmul_cython_array, METH_VARARGS|METH_KEYWORDS, __pyx_doc_8td3a_cpp_6matmul_13matmul_cython_4smatmul_cython_array};
-static PyObject *__pyx_pw_8td3a_cpp_6matmul_13matmul_cython_5smatmul_cython_array(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
-  __Pyx_memviewslice __pyx_v_va = { 0, 0, { 0 }, { 0 }, { 0 } };
-  __Pyx_memviewslice __pyx_v_vb = { 0, 0, { 0 }, { 0 }, { 0 } };
-  PyObject *__pyx_r = 0;
-  __Pyx_RefNannyDeclarations
-  __Pyx_RefNannySetupContext("smatmul_cython_array (wrapper)", 0);
-  {
-    static PyObject **__pyx_pyargnames[] = {&__pyx_n_s_va,&__pyx_n_s_vb,0};
-    PyObject* values[2] = {0,0};
-    if (unlikely(__pyx_kwds)) {
-      Py_ssize_t kw_args;
-      const Py_ssize_t pos_args = PyTuple_GET_SIZE(__pyx_args);
-      switch (pos_args) {
-        case  2: values[1] = PyTuple_GET_ITEM(__pyx_args, 1);
-        CYTHON_FALLTHROUGH;
-        case  1: values[0] = PyTuple_GET_ITEM(__pyx_args, 0);
-        CYTHON_FALLTHROUGH;
-        case  0: break;
-        default: goto __pyx_L5_argtuple_error;
-      }
-      kw_args = PyDict_Size(__pyx_kwds);
-      switch (pos_args) {
-        case  0:
-        if (likely((values[0] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_va)) != 0)) kw_args--;
-        else goto __pyx_L5_argtuple_error;
-        CYTHON_FALLTHROUGH;
-        case  1:
-        if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_vb)) != 0)) kw_args--;
-        else {
-          __Pyx_RaiseArgtupleInvalid("smatmul_cython_array", 1, 2, 2, 1); __PYX_ERR(0, 48, __pyx_L3_error)
-        }
-      }
-      if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "smatmul_cython_array") < 0)) __PYX_ERR(0, 48, __pyx_L3_error)
-      }
-    } else if (PyTuple_GET_SIZE(__pyx_args) != 2) {
-      goto __pyx_L5_argtuple_error;
-    } else {
-      values[0] = PyTuple_GET_ITEM(__pyx_args, 0);
-      values[1] = PyTuple_GET_ITEM(__pyx_args, 1);
-    }
-    __pyx_v_va = __Pyx_PyObject_to_MemoryviewSlice_dc_float__const__(values[0], 0); if (unlikely(!__pyx_v_va.memview)) __PYX_ERR(0, 48, __pyx_L3_error)
-    __pyx_v_vb = __Pyx_PyObject_to_MemoryviewSlice_dc_float__const__(values[1], 0); if (unlikely(!__pyx_v_vb.memview)) __PYX_ERR(0, 48, __pyx_L3_error)
-  }
-  goto __pyx_L4_argument_unpacking_done;
-  __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("smatmul_cython_array", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 48, __pyx_L3_error)
-  __pyx_L3_error:;
-  __Pyx_AddTraceback("td3a_cpp.matmul.matmul_cython.smatmul_cython_array", __pyx_clineno, __pyx_lineno, __pyx_filename);
-  __Pyx_RefNannyFinishContext();
-  return NULL;
-  __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_8td3a_cpp_6matmul_13matmul_cython_4smatmul_cython_array(__pyx_self, __pyx_v_va, __pyx_v_vb);
-
-  /* function exit code */
-  __Pyx_RefNannyFinishContext();
-  return __pyx_r;
-}
-
-static PyObject *__pyx_pf_8td3a_cpp_6matmul_13matmul_cython_4smatmul_cython_array(CYTHON_UNUSED PyObject *__pyx_self, __Pyx_memviewslice __pyx_v_va, __Pyx_memviewslice __pyx_v_vb) {
-  std::vector<float>  __pyx_v_p;
-  Py_ssize_t __pyx_v_i;
-  PyObject *__pyx_r = NULL;
-  __Pyx_RefNannyDeclarations
-  int __pyx_t_1;
-  PyObject *__pyx_t_2 = NULL;
-  Py_ssize_t __pyx_t_3;
-  Py_ssize_t __pyx_t_4;
-  Py_ssize_t __pyx_t_5;
-  Py_ssize_t __pyx_t_6;
-  Py_ssize_t __pyx_t_7;
-  __Pyx_RefNannySetupContext("smatmul_cython_array", 0);
-
-  /* "td3a_cpp/matmul/matmul_cython.pyx":56
- *     :return: matmul product
- *     """
- *     if va.shape[0] != vb.shape[0]:             # <<<<<<<<<<<<<<
- *         raise ValueError("Vectors must have same shape.")
- *     cdef vector[float] p
- */
-  __pyx_t_1 = (((__pyx_v_va.shape[0]) != (__pyx_v_vb.shape[0])) != 0);
-  if (unlikely(__pyx_t_1)) {
-
-    /* "td3a_cpp/matmul/matmul_cython.pyx":57
- *     """
- *     if va.shape[0] != vb.shape[0]:
- *         raise ValueError("Vectors must have same shape.")             # <<<<<<<<<<<<<<
- *     cdef vector[float] p
- *     p.reserve(va.shape[0])
- */
-    __pyx_t_2 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple_, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 57, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_2);
-    __Pyx_Raise(__pyx_t_2, 0, 0, 0);
-    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __PYX_ERR(0, 57, __pyx_L1_error)
-
-    /* "td3a_cpp/matmul/matmul_cython.pyx":56
- *     :return: matmul product
- *     """
- *     if va.shape[0] != vb.shape[0]:             # <<<<<<<<<<<<<<
- *         raise ValueError("Vectors must have same shape.")
- *     cdef vector[float] p
- */
-  }
-
-  /* "td3a_cpp/matmul/matmul_cython.pyx":59
- *         raise ValueError("Vectors must have same shape.")
- *     cdef vector[float] p
- *     p.reserve(va.shape[0])             # <<<<<<<<<<<<<<
- *     for i in range(va.shape[0]):
- *         p.push_back(va[i] * vb[i])
- */
-  __pyx_v_p.reserve((__pyx_v_va.shape[0]));
-
-  /* "td3a_cpp/matmul/matmul_cython.pyx":60
- *     cdef vector[float] p
- *     p.reserve(va.shape[0])
- *     for i in range(va.shape[0]):             # <<<<<<<<<<<<<<
- *         p.push_back(va[i] * vb[i])
- *     return p
- */
-  __pyx_t_3 = (__pyx_v_va.shape[0]);
-  __pyx_t_4 = __pyx_t_3;
-  for (__pyx_t_5 = 0; __pyx_t_5 < __pyx_t_4; __pyx_t_5+=1) {
-    __pyx_v_i = __pyx_t_5;
-
-    /* "td3a_cpp/matmul/matmul_cython.pyx":61
- *     p.reserve(va.shape[0])
- *     for i in range(va.shape[0]):
- *         p.push_back(va[i] * vb[i])             # <<<<<<<<<<<<<<
- *     return p
- * 
- */
-    __pyx_t_6 = __pyx_v_i;
-    __pyx_t_7 = __pyx_v_i;
-    try {
-      __pyx_v_p.push_back(((*((float const  *) ( /* dim=0 */ ((char *) (((float const  *) __pyx_v_va.data) + __pyx_t_6)) ))) * (*((float const  *) ( /* dim=0 */ ((char *) (((float const  *) __pyx_v_vb.data) + __pyx_t_7)) )))));
-    } catch(...) {
-      __Pyx_CppExn2PyErr();
-      __PYX_ERR(0, 61, __pyx_L1_error)
-    }
-  }
-
-  /* "td3a_cpp/matmul/matmul_cython.pyx":62
- *     for i in range(va.shape[0]):
- *         p.push_back(va[i] * vb[i])
- *     return p             # <<<<<<<<<<<<<<
- * 
- * 
- */
-  __Pyx_XDECREF(__pyx_r);
-  __pyx_t_2 = __pyx_convert_vector_to_py_float(__pyx_v_p); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 62, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
-  __pyx_r = __pyx_t_2;
-  __pyx_t_2 = 0;
-  goto __pyx_L0;
-
-  /* "td3a_cpp/matmul/matmul_cython.pyx":48
- * 
- * 
- * def smatmul_cython_array(const float[::1] va, const float[::1] vb):             # <<<<<<<<<<<<<<
- *     """
- *     matmul product implemented with C types.
- */
-
-  /* function exit code */
-  __pyx_L1_error:;
-  __Pyx_XDECREF(__pyx_t_2);
-  __Pyx_AddTraceback("td3a_cpp.matmul.matmul_cython.smatmul_cython_array", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("td3a_cpp.matmul.matmul_cython.matmul_cython_array", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __PYX_XDEC_MEMVIEW(&__pyx_v_va, 1);
@@ -5650,60 +5447,6 @@ static PyObject *__pyx_convert_vector_to_py_double(const std::vector<double>  &_
   __Pyx_XDECREF(__pyx_t_1);
   __Pyx_XDECREF(__pyx_t_5);
   __Pyx_AddTraceback("vector.to_py.__pyx_convert_vector_to_py_double", __pyx_clineno, __pyx_lineno, __pyx_filename);
-  __pyx_r = 0;
-  __pyx_L0:;
-  __Pyx_XGIVEREF(__pyx_r);
-  __Pyx_RefNannyFinishContext();
-  return __pyx_r;
-}
-
-static PyObject *__pyx_convert_vector_to_py_float(const std::vector<float>  &__pyx_v_v) {
-  size_t __pyx_v_i;
-  PyObject *__pyx_r = NULL;
-  __Pyx_RefNannyDeclarations
-  PyObject *__pyx_t_1 = NULL;
-  size_t __pyx_t_2;
-  size_t __pyx_t_3;
-  size_t __pyx_t_4;
-  PyObject *__pyx_t_5 = NULL;
-  __Pyx_RefNannySetupContext("__pyx_convert_vector_to_py_float", 0);
-
-  /* "vector.to_py":61
- * @cname("__pyx_convert_vector_to_py_float")
- * cdef object __pyx_convert_vector_to_py_float(vector[X]& v):
- *     return [v[i] for i in range(v.size())]             # <<<<<<<<<<<<<<
- * 
- * 
- */
-  __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(2, 61, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __pyx_v_v.size();
-  __pyx_t_3 = __pyx_t_2;
-  for (__pyx_t_4 = 0; __pyx_t_4 < __pyx_t_3; __pyx_t_4+=1) {
-    __pyx_v_i = __pyx_t_4;
-    __pyx_t_5 = PyFloat_FromDouble((__pyx_v_v[__pyx_v_i])); if (unlikely(!__pyx_t_5)) __PYX_ERR(2, 61, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_5);
-    if (unlikely(__Pyx_ListComp_Append(__pyx_t_1, (PyObject*)__pyx_t_5))) __PYX_ERR(2, 61, __pyx_L1_error)
-    __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  }
-  __pyx_r = __pyx_t_1;
-  __pyx_t_1 = 0;
-  goto __pyx_L0;
-
-  /* "vector.to_py":60
- * 
- * @cname("__pyx_convert_vector_to_py_float")
- * cdef object __pyx_convert_vector_to_py_float(vector[X]& v):             # <<<<<<<<<<<<<<
- *     return [v[i] for i in range(v.size())]
- * 
- */
-
-  /* function exit code */
-  __pyx_L1_error:;
-  __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_XDECREF(__pyx_t_5);
-  __Pyx_AddTraceback("vector.to_py.__pyx_convert_vector_to_py_float", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = 0;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
@@ -19291,7 +19034,6 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_kp_s_contiguous_and_direct, __pyx_k_contiguous_and_direct, sizeof(__pyx_k_contiguous_and_direct), 0, 0, 1, 0},
   {&__pyx_kp_s_contiguous_and_indirect, __pyx_k_contiguous_and_indirect, sizeof(__pyx_k_contiguous_and_indirect), 0, 0, 1, 0},
   {&__pyx_n_s_dict, __pyx_k_dict, sizeof(__pyx_k_dict), 0, 0, 1, 1},
-  {&__pyx_n_s_dmatmul_cython_array, __pyx_k_dmatmul_cython_array, sizeof(__pyx_k_dmatmul_cython_array), 0, 0, 1, 1},
   {&__pyx_n_s_dtype_is_object, __pyx_k_dtype_is_object, sizeof(__pyx_k_dtype_is_object), 0, 0, 1, 1},
   {&__pyx_n_s_encode, __pyx_k_encode, sizeof(__pyx_k_encode), 0, 0, 1, 1},
   {&__pyx_n_s_enumerate, __pyx_k_enumerate, sizeof(__pyx_k_enumerate), 0, 0, 1, 1},
@@ -19309,6 +19051,7 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_kp_s_itemsize_0_for_cython_array, __pyx_k_itemsize_0_for_cython_array, sizeof(__pyx_k_itemsize_0_for_cython_array), 0, 0, 1, 0},
   {&__pyx_n_s_l, __pyx_k_l, sizeof(__pyx_k_l), 0, 0, 1, 1},
   {&__pyx_n_s_main, __pyx_k_main, sizeof(__pyx_k_main), 0, 0, 1, 1},
+  {&__pyx_n_s_matmul_cython_array, __pyx_k_matmul_cython_array, sizeof(__pyx_k_matmul_cython_array), 0, 0, 1, 1},
   {&__pyx_n_s_matmul_product, __pyx_k_matmul_product, sizeof(__pyx_k_matmul_product), 0, 0, 1, 1},
   {&__pyx_n_s_memview, __pyx_k_memview, sizeof(__pyx_k_memview), 0, 0, 1, 1},
   {&__pyx_n_s_mode, __pyx_k_mode, sizeof(__pyx_k_mode), 0, 0, 1, 1},
@@ -19342,7 +19085,6 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_setstate_cython, __pyx_k_setstate_cython, sizeof(__pyx_k_setstate_cython), 0, 0, 1, 1},
   {&__pyx_n_s_shape, __pyx_k_shape, sizeof(__pyx_k_shape), 0, 0, 1, 1},
   {&__pyx_n_s_size, __pyx_k_size, sizeof(__pyx_k_size), 0, 0, 1, 1},
-  {&__pyx_n_s_smatmul_cython_array, __pyx_k_smatmul_cython_array, sizeof(__pyx_k_smatmul_cython_array), 0, 0, 1, 1},
   {&__pyx_n_s_start, __pyx_k_start, sizeof(__pyx_k_start), 0, 0, 1, 1},
   {&__pyx_n_s_step, __pyx_k_step, sizeof(__pyx_k_step), 0, 0, 1, 1},
   {&__pyx_n_s_stop, __pyx_k_stop, sizeof(__pyx_k_stop), 0, 0, 1, 1},
@@ -19364,8 +19106,8 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {0, 0, 0, 0, 0, 0, 0}
 };
 static CYTHON_SMALL_CODE int __Pyx_InitCachedBuiltins(void) {
-  __pyx_builtin_range = __Pyx_GetBuiltinName(__pyx_n_s_range); if (!__pyx_builtin_range) __PYX_ERR(0, 26, __pyx_L1_error)
-  __pyx_builtin_ValueError = __Pyx_GetBuiltinName(__pyx_n_s_ValueError); if (!__pyx_builtin_ValueError) __PYX_ERR(0, 40, __pyx_L1_error)
+  __pyx_builtin_range = __Pyx_GetBuiltinName(__pyx_n_s_range); if (!__pyx_builtin_range) __PYX_ERR(0, 27, __pyx_L1_error)
+  __pyx_builtin_ValueError = __Pyx_GetBuiltinName(__pyx_n_s_ValueError); if (!__pyx_builtin_ValueError) __PYX_ERR(0, 41, __pyx_L1_error)
   __pyx_builtin_RuntimeError = __Pyx_GetBuiltinName(__pyx_n_s_RuntimeError); if (!__pyx_builtin_RuntimeError) __PYX_ERR(1, 856, __pyx_L1_error)
   __pyx_builtin_ImportError = __Pyx_GetBuiltinName(__pyx_n_s_ImportError); if (!__pyx_builtin_ImportError) __PYX_ERR(1, 1038, __pyx_L1_error)
   __pyx_builtin_MemoryError = __Pyx_GetBuiltinName(__pyx_n_s_MemoryError); if (!__pyx_builtin_MemoryError) __PYX_ERR(2, 148, __pyx_L1_error)
@@ -19383,14 +19125,14 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__Pyx_InitCachedConstants", 0);
 
-  /* "td3a_cpp/matmul/matmul_cython.pyx":40
+  /* "td3a_cpp/matmul/matmul_cython.pyx":41
  *     """
  *     if va.shape[0] != vb.shape[0]:
  *         raise ValueError("Vectors must have same shape.")             # <<<<<<<<<<<<<<
  *     cdef vector[double] p
  *     p.reserve(va.shape[0])
  */
-  __pyx_tuple_ = PyTuple_Pack(1, __pyx_kp_u_Vectors_must_have_same_shape); if (unlikely(!__pyx_tuple_)) __PYX_ERR(0, 40, __pyx_L1_error)
+  __pyx_tuple_ = PyTuple_Pack(1, __pyx_kp_u_Vectors_must_have_same_shape); if (unlikely(!__pyx_tuple_)) __PYX_ERR(0, 41, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple_);
   __Pyx_GIVEREF(__pyx_tuple_);
 
@@ -19663,41 +19405,29 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __Pyx_GOTREF(__pyx_tuple__26);
   __Pyx_GIVEREF(__pyx_tuple__26);
 
-  /* "td3a_cpp/matmul/matmul_cython.pyx":17
+  /* "td3a_cpp/matmul/matmul_cython.pyx":18
  * numpy.import_array()
  * 
  * def matmul_product(va, vb):             # <<<<<<<<<<<<<<
  *     """
  *     Python matmul product but in :epkg:`cython` file.
  */
-  __pyx_tuple__27 = PyTuple_Pack(4, __pyx_n_s_va, __pyx_n_s_vb, __pyx_n_s_l, __pyx_n_s_i); if (unlikely(!__pyx_tuple__27)) __PYX_ERR(0, 17, __pyx_L1_error)
+  __pyx_tuple__27 = PyTuple_Pack(4, __pyx_n_s_va, __pyx_n_s_vb, __pyx_n_s_l, __pyx_n_s_i); if (unlikely(!__pyx_tuple__27)) __PYX_ERR(0, 18, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__27);
   __Pyx_GIVEREF(__pyx_tuple__27);
-  __pyx_codeobj__28 = (PyObject*)__Pyx_PyCode_New(2, 0, 4, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__27, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_td3a_cpp_matmul_matmul_cython_py, __pyx_n_s_matmul_product, 17, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__28)) __PYX_ERR(0, 17, __pyx_L1_error)
+  __pyx_codeobj__28 = (PyObject*)__Pyx_PyCode_New(2, 0, 4, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__27, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_td3a_cpp_matmul_matmul_cython_py, __pyx_n_s_matmul_product, 18, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__28)) __PYX_ERR(0, 18, __pyx_L1_error)
 
-  /* "td3a_cpp/matmul/matmul_cython.pyx":31
+  /* "td3a_cpp/matmul/matmul_cython.pyx":32
  * 
  * 
- * def dmatmul_cython_array(const double[::1] va, const double[::1] vb):             # <<<<<<<<<<<<<<
+ * def matmul_cython_array(const double[::1] va, const double[::1] vb):             # <<<<<<<<<<<<<<
  *     """
- *     matmul product implemented with C types.
+ *     dot product implemented with C types.
  */
-  __pyx_tuple__29 = PyTuple_Pack(4, __pyx_n_s_va, __pyx_n_s_vb, __pyx_n_s_p, __pyx_n_s_i); if (unlikely(!__pyx_tuple__29)) __PYX_ERR(0, 31, __pyx_L1_error)
+  __pyx_tuple__29 = PyTuple_Pack(4, __pyx_n_s_va, __pyx_n_s_vb, __pyx_n_s_p, __pyx_n_s_i); if (unlikely(!__pyx_tuple__29)) __PYX_ERR(0, 32, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__29);
   __Pyx_GIVEREF(__pyx_tuple__29);
-  __pyx_codeobj__30 = (PyObject*)__Pyx_PyCode_New(2, 0, 4, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__29, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_td3a_cpp_matmul_matmul_cython_py, __pyx_n_s_dmatmul_cython_array, 31, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__30)) __PYX_ERR(0, 31, __pyx_L1_error)
-
-  /* "td3a_cpp/matmul/matmul_cython.pyx":48
- * 
- * 
- * def smatmul_cython_array(const float[::1] va, const float[::1] vb):             # <<<<<<<<<<<<<<
- *     """
- *     matmul product implemented with C types.
- */
-  __pyx_tuple__31 = PyTuple_Pack(4, __pyx_n_s_va, __pyx_n_s_vb, __pyx_n_s_p, __pyx_n_s_i); if (unlikely(!__pyx_tuple__31)) __PYX_ERR(0, 48, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__31);
-  __Pyx_GIVEREF(__pyx_tuple__31);
-  __pyx_codeobj__32 = (PyObject*)__Pyx_PyCode_New(2, 0, 4, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__31, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_td3a_cpp_matmul_matmul_cython_py, __pyx_n_s_smatmul_cython_array, 48, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__32)) __PYX_ERR(0, 48, __pyx_L1_error)
+  __pyx_codeobj__30 = (PyObject*)__Pyx_PyCode_New(2, 0, 4, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__29, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_td3a_cpp_matmul_matmul_cython_py, __pyx_n_s_matmul_cython_array, 32, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__30)) __PYX_ERR(0, 32, __pyx_L1_error)
 
   /* "View.MemoryView":286
  *         return self.name
@@ -19706,9 +19436,9 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
  * cdef strided = Enum("<strided and direct>") # default
  * cdef indirect = Enum("<strided and indirect>")
  */
-  __pyx_tuple__33 = PyTuple_Pack(1, __pyx_kp_s_strided_and_direct_or_indirect); if (unlikely(!__pyx_tuple__33)) __PYX_ERR(2, 286, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__33);
-  __Pyx_GIVEREF(__pyx_tuple__33);
+  __pyx_tuple__31 = PyTuple_Pack(1, __pyx_kp_s_strided_and_direct_or_indirect); if (unlikely(!__pyx_tuple__31)) __PYX_ERR(2, 286, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__31);
+  __Pyx_GIVEREF(__pyx_tuple__31);
 
   /* "View.MemoryView":287
  * 
@@ -19717,9 +19447,9 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
  * cdef indirect = Enum("<strided and indirect>")
  * 
  */
-  __pyx_tuple__34 = PyTuple_Pack(1, __pyx_kp_s_strided_and_direct); if (unlikely(!__pyx_tuple__34)) __PYX_ERR(2, 287, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__34);
-  __Pyx_GIVEREF(__pyx_tuple__34);
+  __pyx_tuple__32 = PyTuple_Pack(1, __pyx_kp_s_strided_and_direct); if (unlikely(!__pyx_tuple__32)) __PYX_ERR(2, 287, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__32);
+  __Pyx_GIVEREF(__pyx_tuple__32);
 
   /* "View.MemoryView":288
  * cdef generic = Enum("<strided and direct or indirect>")
@@ -19728,9 +19458,9 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
  * 
  * 
  */
-  __pyx_tuple__35 = PyTuple_Pack(1, __pyx_kp_s_strided_and_indirect); if (unlikely(!__pyx_tuple__35)) __PYX_ERR(2, 288, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__35);
-  __Pyx_GIVEREF(__pyx_tuple__35);
+  __pyx_tuple__33 = PyTuple_Pack(1, __pyx_kp_s_strided_and_indirect); if (unlikely(!__pyx_tuple__33)) __PYX_ERR(2, 288, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__33);
+  __Pyx_GIVEREF(__pyx_tuple__33);
 
   /* "View.MemoryView":291
  * 
@@ -19739,9 +19469,9 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
  * cdef indirect_contiguous = Enum("<contiguous and indirect>")
  * 
  */
-  __pyx_tuple__36 = PyTuple_Pack(1, __pyx_kp_s_contiguous_and_direct); if (unlikely(!__pyx_tuple__36)) __PYX_ERR(2, 291, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__36);
-  __Pyx_GIVEREF(__pyx_tuple__36);
+  __pyx_tuple__34 = PyTuple_Pack(1, __pyx_kp_s_contiguous_and_direct); if (unlikely(!__pyx_tuple__34)) __PYX_ERR(2, 291, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__34);
+  __Pyx_GIVEREF(__pyx_tuple__34);
 
   /* "View.MemoryView":292
  * 
@@ -19750,19 +19480,19 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
  * 
  * 
  */
-  __pyx_tuple__37 = PyTuple_Pack(1, __pyx_kp_s_contiguous_and_indirect); if (unlikely(!__pyx_tuple__37)) __PYX_ERR(2, 292, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__37);
-  __Pyx_GIVEREF(__pyx_tuple__37);
+  __pyx_tuple__35 = PyTuple_Pack(1, __pyx_kp_s_contiguous_and_indirect); if (unlikely(!__pyx_tuple__35)) __PYX_ERR(2, 292, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__35);
+  __Pyx_GIVEREF(__pyx_tuple__35);
 
   /* "(tree fragment)":1
  * def __pyx_unpickle_Enum(__pyx_type, long __pyx_checksum, __pyx_state):             # <<<<<<<<<<<<<<
  *     cdef object __pyx_PickleError
  *     cdef object __pyx_result
  */
-  __pyx_tuple__38 = PyTuple_Pack(5, __pyx_n_s_pyx_type, __pyx_n_s_pyx_checksum, __pyx_n_s_pyx_state, __pyx_n_s_pyx_PickleError, __pyx_n_s_pyx_result); if (unlikely(!__pyx_tuple__38)) __PYX_ERR(2, 1, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__38);
-  __Pyx_GIVEREF(__pyx_tuple__38);
-  __pyx_codeobj__39 = (PyObject*)__Pyx_PyCode_New(3, 0, 5, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__38, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_stringsource, __pyx_n_s_pyx_unpickle_Enum, 1, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__39)) __PYX_ERR(2, 1, __pyx_L1_error)
+  __pyx_tuple__36 = PyTuple_Pack(5, __pyx_n_s_pyx_type, __pyx_n_s_pyx_checksum, __pyx_n_s_pyx_state, __pyx_n_s_pyx_PickleError, __pyx_n_s_pyx_result); if (unlikely(!__pyx_tuple__36)) __PYX_ERR(2, 1, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__36);
+  __Pyx_GIVEREF(__pyx_tuple__36);
+  __pyx_codeobj__37 = (PyObject*)__Pyx_PyCode_New(3, 0, 5, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__36, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_stringsource, __pyx_n_s_pyx_unpickle_Enum, 1, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__37)) __PYX_ERR(2, 1, __pyx_L1_error)
   __Pyx_RefNannyFinishContext();
   return 0;
   __pyx_L1_error:;
@@ -20132,61 +19862,49 @@ if (!__Pyx_RefNanny) {
   if (__Pyx_patch_abc() < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   #endif
 
-  /* "td3a_cpp/matmul/matmul_cython.pyx":12
+  /* "td3a_cpp/matmul/matmul_cython.pyx":13
  * 
  * 
  * import numpy             # <<<<<<<<<<<<<<
  * cimport numpy
  * cimport cython
  */
-  __pyx_t_1 = __Pyx_Import(__pyx_n_s_numpy, 0, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 12, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_Import(__pyx_n_s_numpy, 0, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 13, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_numpy, __pyx_t_1) < 0) __PYX_ERR(0, 12, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_numpy, __pyx_t_1) < 0) __PYX_ERR(0, 13, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "td3a_cpp/matmul/matmul_cython.pyx":15
+  /* "td3a_cpp/matmul/matmul_cython.pyx":16
  * cimport numpy
  * cimport cython
  * numpy.import_array()             # <<<<<<<<<<<<<<
  * 
  * def matmul_product(va, vb):
  */
-  __pyx_t_2 = __pyx_f_5numpy_import_array(); if (unlikely(__pyx_t_2 == ((int)-1))) __PYX_ERR(0, 15, __pyx_L1_error)
+  __pyx_t_2 = __pyx_f_5numpy_import_array(); if (unlikely(__pyx_t_2 == ((int)-1))) __PYX_ERR(0, 16, __pyx_L1_error)
 
-  /* "td3a_cpp/matmul/matmul_cython.pyx":17
+  /* "td3a_cpp/matmul/matmul_cython.pyx":18
  * numpy.import_array()
  * 
  * def matmul_product(va, vb):             # <<<<<<<<<<<<<<
  *     """
  *     Python matmul product but in :epkg:`cython` file.
  */
-  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_8td3a_cpp_6matmul_13matmul_cython_1matmul_product, NULL, __pyx_n_s_td3a_cpp_matmul_matmul_cython); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 17, __pyx_L1_error)
+  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_8td3a_cpp_6matmul_13matmul_cython_1matmul_product, NULL, __pyx_n_s_td3a_cpp_matmul_matmul_cython); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 18, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_matmul_product, __pyx_t_1) < 0) __PYX_ERR(0, 17, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_matmul_product, __pyx_t_1) < 0) __PYX_ERR(0, 18, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "td3a_cpp/matmul/matmul_cython.pyx":31
+  /* "td3a_cpp/matmul/matmul_cython.pyx":32
  * 
  * 
- * def dmatmul_cython_array(const double[::1] va, const double[::1] vb):             # <<<<<<<<<<<<<<
+ * def matmul_cython_array(const double[::1] va, const double[::1] vb):             # <<<<<<<<<<<<<<
  *     """
- *     matmul product implemented with C types.
+ *     dot product implemented with C types.
  */
-  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_8td3a_cpp_6matmul_13matmul_cython_3dmatmul_cython_array, NULL, __pyx_n_s_td3a_cpp_matmul_matmul_cython); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 31, __pyx_L1_error)
+  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_8td3a_cpp_6matmul_13matmul_cython_3matmul_cython_array, NULL, __pyx_n_s_td3a_cpp_matmul_matmul_cython); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 32, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_dmatmul_cython_array, __pyx_t_1) < 0) __PYX_ERR(0, 31, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-
-  /* "td3a_cpp/matmul/matmul_cython.pyx":48
- * 
- * 
- * def smatmul_cython_array(const float[::1] va, const float[::1] vb):             # <<<<<<<<<<<<<<
- *     """
- *     matmul product implemented with C types.
- */
-  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_8td3a_cpp_6matmul_13matmul_cython_5smatmul_cython_array, NULL, __pyx_n_s_td3a_cpp_matmul_matmul_cython); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 48, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_smatmul_cython_array, __pyx_t_1) < 0) __PYX_ERR(0, 48, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_matmul_cython_array, __pyx_t_1) < 0) __PYX_ERR(0, 32, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
   /* "td3a_cpp/matmul/matmul_cython.pyx":1
@@ -20219,7 +19937,7 @@ if (!__Pyx_RefNanny) {
  * cdef strided = Enum("<strided and direct>") # default
  * cdef indirect = Enum("<strided and indirect>")
  */
-  __pyx_t_1 = __Pyx_PyObject_Call(((PyObject *)__pyx_MemviewEnum_type), __pyx_tuple__33, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(2, 286, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_Call(((PyObject *)__pyx_MemviewEnum_type), __pyx_tuple__31, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(2, 286, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_XGOTREF(generic);
   __Pyx_DECREF_SET(generic, __pyx_t_1);
@@ -20233,7 +19951,7 @@ if (!__Pyx_RefNanny) {
  * cdef indirect = Enum("<strided and indirect>")
  * 
  */
-  __pyx_t_1 = __Pyx_PyObject_Call(((PyObject *)__pyx_MemviewEnum_type), __pyx_tuple__34, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(2, 287, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_Call(((PyObject *)__pyx_MemviewEnum_type), __pyx_tuple__32, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(2, 287, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_XGOTREF(strided);
   __Pyx_DECREF_SET(strided, __pyx_t_1);
@@ -20247,7 +19965,7 @@ if (!__Pyx_RefNanny) {
  * 
  * 
  */
-  __pyx_t_1 = __Pyx_PyObject_Call(((PyObject *)__pyx_MemviewEnum_type), __pyx_tuple__35, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(2, 288, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_Call(((PyObject *)__pyx_MemviewEnum_type), __pyx_tuple__33, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(2, 288, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_XGOTREF(indirect);
   __Pyx_DECREF_SET(indirect, __pyx_t_1);
@@ -20261,7 +19979,7 @@ if (!__Pyx_RefNanny) {
  * cdef indirect_contiguous = Enum("<contiguous and indirect>")
  * 
  */
-  __pyx_t_1 = __Pyx_PyObject_Call(((PyObject *)__pyx_MemviewEnum_type), __pyx_tuple__36, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(2, 291, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_Call(((PyObject *)__pyx_MemviewEnum_type), __pyx_tuple__34, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(2, 291, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_XGOTREF(contiguous);
   __Pyx_DECREF_SET(contiguous, __pyx_t_1);
@@ -20275,7 +19993,7 @@ if (!__Pyx_RefNanny) {
  * 
  * 
  */
-  __pyx_t_1 = __Pyx_PyObject_Call(((PyObject *)__pyx_MemviewEnum_type), __pyx_tuple__37, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(2, 292, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_Call(((PyObject *)__pyx_MemviewEnum_type), __pyx_tuple__35, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(2, 292, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_XGOTREF(indirect_contiguous);
   __Pyx_DECREF_SET(indirect_contiguous, __pyx_t_1);
@@ -23409,29 +23127,6 @@ no_fail:
     retcode = __Pyx_ValidateAndInit_memviewslice(axes_specs, __Pyx_IS_C_CONTIG,
                                                  (PyBUF_C_CONTIGUOUS | PyBUF_FORMAT) | writable_flag, 1,
                                                  &__Pyx_TypeInfo_double__const__, stack,
-                                                 &result, obj);
-    if (unlikely(retcode == -1))
-        goto __pyx_fail;
-    return result;
-__pyx_fail:
-    result.memview = NULL;
-    result.data = NULL;
-    return result;
-}
-
-/* ObjectToMemviewSlice */
-  static CYTHON_INLINE __Pyx_memviewslice __Pyx_PyObject_to_MemoryviewSlice_dc_float__const__(PyObject *obj, int writable_flag) {
-    __Pyx_memviewslice result = { 0, 0, { 0 }, { 0 }, { 0 } };
-    __Pyx_BufFmt_StackElem stack[1];
-    int axes_specs[] = { (__Pyx_MEMVIEW_DIRECT | __Pyx_MEMVIEW_CONTIG) };
-    int retcode;
-    if (obj == Py_None) {
-        result.memview = (struct __pyx_memoryview_obj *) Py_None;
-        return result;
-    }
-    retcode = __Pyx_ValidateAndInit_memviewslice(axes_specs, __Pyx_IS_C_CONTIG,
-                                                 (PyBUF_C_CONTIGUOUS | PyBUF_FORMAT) | writable_flag, 1,
-                                                 &__Pyx_TypeInfo_float__const__, stack,
                                                  &result, obj);
     if (unlikely(retcode == -1))
         goto __pyx_fail;
