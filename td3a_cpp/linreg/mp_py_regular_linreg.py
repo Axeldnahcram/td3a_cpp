@@ -17,7 +17,6 @@ def deco(j, X, y, N, p, beta, alpha, L1_ratio):
     return S(1./N*np.dot(X[:, j], (y - (np.dot(X, beta) - np.dot(X[:, j], beta[j])))), alpha*L1_ratio)/(1+alpha*(1-L1_ratio))
 
 
-
 def mp_regular_linreg(X, y, beta_0, alpha, L1_ratio, max_iter=50, tol=0.0001, *args, **kwargs):
     """
     Multi-processing regular linear regression 
