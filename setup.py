@@ -104,7 +104,7 @@ def get_extension_linear_reg(name):
         srcs.extend(['td3a_cpp/linreg/%s_.cpp' % name])
         args['language'] = "c++"
         args["libraries"] = ["m"]
-        args["extra_compile_args"] = ["-std=c++11"]
+        args["extra_compile_args"] = ["-std=c++11", "-static"]
 
     ext = Extension(pattern1 % name, srcs,
                     include_dirs=[numpy.get_include()],
