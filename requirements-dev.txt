@@ -13,3 +13,4 @@ sphinx
 sphinx-gallery
 tqdm
 wheel
+sklearn

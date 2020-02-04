@@ -2,4 +2,4 @@
 Shortcuts to *random_forest*.
 """
 
-from .random_forest import RandomForest  # noqa
+from random_forest import create_forest  # noqa
