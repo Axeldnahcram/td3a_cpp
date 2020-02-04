@@ -25,7 +25,7 @@ def mp_regular_linreg(X, y, beta_0, alpha, L1_ratio, max_iter=50, tol=0.0001, *a
     """
 
     N, p = X.shape
-    beta = beta.copy()
+    beta = beta_0.copy()
     b_new = np.zeros(p)
 
     for itr in range(max_iter):
