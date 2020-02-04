@@ -16,7 +16,6 @@ td3a_cpp/tutorial/experiment_cython.cpp
 td3a_cpp/tutorial/dot_cython_omp.cpp
 
 td3a_cpp/linreg/*.so
-td3a_cpp/linreg/cy_regularized_linreg.cpp
 
 td3a_cpp/matmul/*.cpp
 td3a_cpp/matmul/*.so
