@@ -1,5 +1,5 @@
 # function file
-# cpp_regular_linreg - C++ Wrapped Regular LinearRegression
+# cpp_regular_linreg - C++ Wrapped Regularized LinearRegression
 
 import os
 import subprocess
@@ -11,7 +11,7 @@ pyximport.install()
 
 def cpp_regular_linreg(X, y, beta_0, alpha, L1_ratio, max_iter, tol, *args, **kwargs):
     """
-    C++ regular linear regression 
+    C++ regularized linear regression 
 
     :return: slope of the regression
     """

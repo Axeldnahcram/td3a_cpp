@@ -63,5 +63,5 @@ class RegularizedLinearRegression(object):
             return res
 
         if self.method == 'sk':
-            res = sklearn_regular_linreg(X, y)
+            res = sklearn_regular_linreg(X, y, self.alpha, self.L1_ratio)
             return res

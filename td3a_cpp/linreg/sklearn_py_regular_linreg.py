@@ -1,15 +1,18 @@
 # function file
 # sklearn_regular_linreg - sklearn LinearRegression
 
-from sklearn.linear_model import LinearRegression
+from sklearn.linear_model import ElasticNet
 
-def sklearn_regular_linreg(X, y, beta_0, alpha, L1_ratio, max_iter=1000, tol=0.0001, *args, **kwargs):
+def sklearn_regular_linreg(X, y, alpha, L1_ratio, *args, **kwargs):
     """
-    sklearn regular linear regression 
+    sklearn regularized linear regression 
 
     :return: slope of the regression
     """
 
-    reg = LinearRegression().fit(X, y)
+    X = X.astype(numpy.float64)
+    y = y.astype(numpy.float64)
+    reg = ElasticNet(alpha=alpha, l1_ratio=L1_ratio)
+    reg.fit(X,y)
 
     return reg.coef_

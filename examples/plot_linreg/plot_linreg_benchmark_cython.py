@@ -1,15 +1,12 @@
 """
-
-.. _l-example-benchmark-linreg-cython:
-
-Compares linreg implementations (numpy, cython, c++, sse)
+Compares Regularized Linear Regression implementations (sklearn, cython, naive)
 ======================================================
 
 :epkg:`sklearn` should be fast:
 
-* :func:`_product <td3a_cpp.linreg.cpp_py_regular_linreg.cpp_py_regular_linreg>`
-* :func:`_product <td3a_cpp.linreg.mp_py_regular_linreg.mp_py_regular_linreg>`
-* :func:`_product <td3a_cpp.linreg.nv_py_regular_linreg.nv_py_regular_linreg>`
+* :func:`_product <td3a_cpp.linreg.cpp_py_regular_linreg.cpp_regular_linreg>`
+* :func:`_product <td3a_cpp.linreg.mp_py_regular_linreg.mp_regular_linreg>`
+* :func:`_product <td3a_cpp.linreg.nv_py_regular_linreg.nv_regular_linreg>`
 
 .. contents::
     :local:
@@ -20,9 +17,9 @@ import numpy
 from pandas import DataFrame, concat
 from sklearn.datasets import make_blobs
 
-from td3a_cpp.linreg.cpp_py_regular_linreg import cpp_py_regular_linreg
-from td3a_cpp.linreg.mp_py_regular_linreg import mp_py_regular_linreg
-from td3a_cpp.linreg.nv_py_regular_linreg import nv_py_regular_linreg
+from td3a_cpp.linreg.cpp_py_regular_linreg import cpp_regular_linreg
+from td3a_cpp.linreg.mp_py_regular_linreg import mp_regular_linreg
+from td3a_cpp.linreg.nv_py_regular_linreg import nv_regular_linreg
 from td3a_cpp.tools import measure_time_dim
 from sklearn.linear_model import ElasticNet
 
@@ -31,7 +28,11 @@ L1_ratio = 0.5
 max_iter = 100
 tol = 1e-5
 
-def get_vectors(fct, n, h=100, dtype=numpy.float64):
+## Preprocessing
+
+# naive & c++ implemantation
+
+def get_vectors(fct, n, h=1000, dtype=numpy.float64):
     X, y = make_blobs(n_samples=n, centers=3, n_features=2)
     _, p = X.shape
     X = X.astype(numpy.float64)
@@ -52,12 +53,9 @@ def get_vectors(fct, n, h=100, dtype=numpy.float64):
             for n in range(10, n, h)]
     return ctxs
 
-##############################
-# numpy matmul
-# +++++++++
-#
+# sklearn ElasticNet
 
-def get_vectors_elastic(n, h=100, dtype=numpy.float64):
+def get_vectors_elastic(n, h=1000, dtype=numpy.float64):
     X, y = make_blobs(n_samples=n, centers=3, n_features=2)
     _, p = X.shape
     X = X.astype(numpy.float64)
@@ -71,28 +69,27 @@ def get_vectors_elastic(n, h=100, dtype=numpy.float64):
             for n in range(10, n, h)]
     return ctxs
 
-ctxs = get_vectors_elastic(1000)
+## Get time execution
+
+# sklearn ElasticNet
+
+ctxs = get_vectors_elastic(10000)
 df = DataFrame(list(measure_time_dim('linear_regression(X, y)', ctxs, verbose=1)))
-df['fct'] = 'LinearRegression'
+df['fct'] = 'ElasticNet'
 print(df.tail(n=3))
 dfs = [df]
 
-##############################
-# Several cython matmul
-# ++++++++++++++++++
-#
+# naive & c++ implemantation
 
-for fct in [nv_py_regular_linreg, cpp_py_regular_linreg]:
-    ctxs = get_vectors(fct, 1000)
+for fct in [nv_regular_linreg, cpp_regular_linreg]:
+    ctxs = get_vectors(fct, 10000)
 
     df = DataFrame(list(measure_time_dim('linear_regression(X, y, beta, alpha, L1_ratio, max_iter, tol, num_samples, num_features)', ctxs, verbose=1)))
     df['fct'] = fct.__name__
     dfs.append(df)
     print(df.tail(n=3))
 
-#############################
-# Let's display the results
-# +++++++++++++++++++++++++
+## Display results
 
 cc = concat(dfs)
 cc['N'] = cc['x_name']
@@ -104,7 +101,5 @@ cc.pivot('N', 'fct', 'average').plot(
          logy=True, logx=True, ax=ax[1])
 ax[0].set_title("Comparison of cython sdot implementations")
 ax[1].set_title("Comparison of cython sdot implementations")
-
-
 
 plt.show()

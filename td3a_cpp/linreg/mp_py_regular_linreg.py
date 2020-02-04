@@ -1,5 +1,5 @@
 # function file
-# mp_regular_linreg - MultiProcessing Regular LinearRegression
+# mp_regular_linreg - MultiProcessing Regularized LinearRegression
 
 import numpy as np
 from itertools import repeat
@@ -19,7 +19,7 @@ def deco(j, X, y, N, p, beta, alpha, L1_ratio):
 
 def mp_regular_linreg(X, y, beta_0, alpha, L1_ratio, max_iter=50, tol=0.0001, *args, **kwargs):
     """
-    Multi-processing regular linear regression 
+    Multi-processing regularized linear regression 
 
     :return: slope of the regression
     """

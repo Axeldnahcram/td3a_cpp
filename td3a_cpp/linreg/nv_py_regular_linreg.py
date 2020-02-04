@@ -1,12 +1,12 @@
 # function file
-# nv_regular_linreg - Naive Regular LinearRegression
+# nv_regular_linreg - Naive Regularized LinearRegression
 
 import numpy as np
 
 
 def nv_regular_linreg(X, y, beta_0, alpha, L1_ratio, max_iter=1000, tol=0.0001, *args, **kwargs):
     """
-    Naive regular linear regression
+    Naive regularized linear regression
 
     :return: slope of the regression
     """
@@ -18,7 +18,7 @@ def nv_regular_linreg(X, y, beta_0, alpha, L1_ratio, max_iter=1000, tol=0.0001, 
             return 0
 
     N, p = X.shape
-    beta = beta.copy()
+    beta = beta_0.copy()
     b_new = np.zeros(p)
     for itr in range(max_iter):
         for j in range(p):
