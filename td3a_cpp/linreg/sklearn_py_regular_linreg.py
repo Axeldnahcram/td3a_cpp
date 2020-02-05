@@ -1,6 +1,6 @@
 # function file
 # sklearn_regular_linreg - sklearn LinearRegression
-
+import numpy
 from sklearn.linear_model import ElasticNet
 
 def sklearn_regular_linreg(X, y, alpha, L1_ratio, *args, **kwargs):

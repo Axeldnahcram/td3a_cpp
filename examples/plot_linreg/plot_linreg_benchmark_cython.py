@@ -32,7 +32,7 @@ tol = 1e-5
 
 # naive & c++ implemantation
 
-def get_vectors(fct, n, h=1000, dtype=numpy.float64):
+def get_vectors(fct, n, h=10000, dtype=numpy.float64):
     X, y = make_blobs(n_samples=n, centers=3, n_features=2)
     _, p = X.shape
     X = X.astype(numpy.float64)
@@ -55,7 +55,7 @@ def get_vectors(fct, n, h=1000, dtype=numpy.float64):
 
 # sklearn ElasticNet
 
-def get_vectors_elastic(n, h=1000, dtype=numpy.float64):
+def get_vectors_elastic(n, h=10000, dtype=numpy.float64):
     X, y = make_blobs(n_samples=n, centers=3, n_features=2)
     _, p = X.shape
     X = X.astype(numpy.float64)
@@ -73,7 +73,7 @@ def get_vectors_elastic(n, h=1000, dtype=numpy.float64):
 
 # sklearn ElasticNet
 
-ctxs = get_vectors_elastic(10000)
+ctxs = get_vectors_elastic(100000)
 df = DataFrame(list(measure_time_dim('linear_regression(X, y)', ctxs, verbose=1)))
 df['fct'] = 'ElasticNet'
 print(df.tail(n=3))
@@ -82,7 +82,7 @@ dfs = [df]
 # naive & c++ implemantation
 
 for fct in [nv_regular_linreg, cpp_regular_linreg]:
-    ctxs = get_vectors(fct, 10000)
+    ctxs = get_vectors(fct, 100000)
 
     df = DataFrame(list(measure_time_dim('linear_regression(X, y, beta, alpha, L1_ratio, max_iter, tol, num_samples, num_features)', ctxs, verbose=1)))
     df['fct'] = fct.__name__
@@ -99,7 +99,7 @@ cc.pivot('N', 'fct', 'average').plot(
          logy=True, ax=ax[0])
 cc.pivot('N', 'fct', 'average').plot(
          logy=True, logx=True, ax=ax[1])
-ax[0].set_title("Comparison of cython sdot implementations")
-ax[1].set_title("Comparison of cython sdot implementations")
+ax[0].set_title("Comparison of cython linreg implementations")
+ax[1].set_title("Comparison of cython linreg implementations")
 
 plt.show()

@@ -1,15 +1,15 @@
 """
 
-.. _l-example-benchmark-linreg-cython:
+.. _l-example-benchmark-random-forest-cython:
 
-Compares linreg implementations (numpy, cython, c++, sse)
+Compares random-forest implementations (numpy, cython, c++, sse)
 ======================================================
 
 :epkg:`sklearn` should be fast:
 
-* :func:`_product <td3a_cpp.linreg.cpp_py_regular_linreg.cpp_py_regular_linreg>`
-* :func:`_product <td3a_cpp.linreg.mp_py_regular_linreg.mp_py_regular_linreg>`
-* :func:`_product <td3a_cpp.linreg.nv_py_regular_linreg.nv_py_regular_linreg>`
+* :func:`_product <td3a_cpp.random-forest.cpp_py_regular_random-forest.cpp_py_regular_random-forest>`
+* :func:`_product <td3a_cpp.random-forest.mp_py_regular_random-forest.mp_py_regular_random-forest>`
+* :func:`_product <td3a_cpp.random-forest.nv_py_regular_random-forest.nv_py_regular_random-forest>`
 
 .. contents::
     :local:
@@ -19,8 +19,12 @@ import matplotlib.pyplot as plt
 import numpy
 from pandas import DataFrame, concat
 from sklearn.datasets import make_blobs
+import pyximport
+pyximport.install()
 
-from td3a_cpp.random_forest.random_forest import create_forest
+
+from td3a_cpp.random_forest.method_global import create_forest_prime
+from td3a_cpp.random_forest.nv_random_forest import random_forest
 from td3a_cpp.tools import measure_time_dim
 from sklearn.ensemble import RandomForestClassifier
 
@@ -72,7 +76,7 @@ dfs = [df]
 # ++++++++++++++++++
 #
 
-for fct in [create_forest]:
+for fct in [create_forest_prime, random_forest]:
     ctxs = get_vectors_cpp(fct, 100)
 
     df = DataFrame(list(measure_time_dim('random_forest(data, n_trees, max_depth, n_trees)', ctxs, verbose=1)))
