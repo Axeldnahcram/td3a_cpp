@@ -95,6 +95,7 @@ print(df.tail(n=3))
 
 ctxs = get_vectors_nv(random_forest, 100)
 df = DataFrame(list(measure_time_dim('random_forest(data, max_depth, min_size, n_trees, max_x)', ctxs, verbose=1)))
+df['fct'] = random_forest.__name__
 dfs.append(df)
 print(df.tail(n=3))
 
@@ -110,8 +111,8 @@ cc.pivot('N', 'fct', 'average').plot(
          logy=True, ax=ax[0])
 cc.pivot('N', 'fct', 'average').plot(
          logy=True, logx=True, ax=ax[1])
-ax[0].set_title("Comparison of cython sdot implementations")
-ax[1].set_title("Comparison of cython sdot implementations")
+ax[0].set_title("Comparison of cython random forest implementations")
+ax[1].set_title("Comparison of cython random forest implementations")
 
 
 
