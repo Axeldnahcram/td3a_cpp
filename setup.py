@@ -101,21 +101,17 @@ def get_extension_linear_reg(name):
     srcs = ["td3a_cpp/linreg/%s.pyx" % name]
     args = get_defined_args()
     if name in ['cy_regularized_linreg']:
-        srcs.extend(['td3a_cpp/linreg/%s_.cpp' % name])
+        srcs.extend(['td3a_cpp/linreg/cpp_regularized_linreg.cpp'])
         args['language'] = "c++"
         args["libraries"] = ["m"]
         args["extra_compile_args"] = ["-std=c++11"]
 
     ext = Extension(pattern1 % name, srcs,
-                    include_dirs=[numpy.get_include()],
                     **args)
 
-    opts = dict(boundscheck=False, cdivision=True,
-                wraparound=False, language_level=3,
-                cdivision_warnings=True)
 
     from Cython.Build import cythonize
-    ext_modules.extend(cythonize([ext], compiler_directives=opts))
+    ext_modules.extend(cythonize([ext]))
     return ext_modules
 
 def get_extension_random_forest(name):
@@ -129,13 +125,10 @@ def get_extension_random_forest(name):
                     include_dirs=[numpy.get_include()],
                     **args)
 
-    opts = dict(boundscheck=False, cdivision=True,
-                wraparound=False, language_level=3,
-                cdivision_warnings=True)
 
     ext_modules = []
     from Cython.Build import cythonize
-    ext_modules.extend(cythonize([ext], compiler_directives=opts))
+    ext_modules.extend(cythonize([ext]))
     return ext_modules
 
 

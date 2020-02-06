@@ -165,7 +165,7 @@ cdef dict recurse_tree(dict node, int depth, int max_depth, int max_x):
 
 
 # labels have to be last column
-cdef create_forest(ndarray[float64_t, ndim=2] data, int n_trees, int max_depth, int max_x):
+cpdef create_forest(ndarray[float64_t, ndim=2] data, int n_trees, int max_depth, int max_x):
     cdef:
         list random_forest = []
         dict tree, root_node

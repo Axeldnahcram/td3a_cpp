@@ -1,5 +1,5 @@
 # distutils: language = c++
-# distutils: sources = td3a_cpp/linreg/cy_regularized_linreg_.cpp
+# distutils: sources = td3a_cpp/linreg/cpp_regularized_linreg.cpp
 
 cimport cy_regularized_linreg
 

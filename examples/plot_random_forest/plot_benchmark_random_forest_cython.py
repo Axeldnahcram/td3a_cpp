@@ -32,7 +32,6 @@ from sklearn.ensemble import RandomForestClassifier
 def get_vectors_cpp(fct, n, h=10, dtype=numpy.float64):
     X, y = make_blobs(n_samples=n, centers=3, n_features=4)
     X = X.astype(numpy.float64)
-    print(X.shape)
     y = y.astype(numpy.float64)
     y = y.reshape((n,1))
     data = numpy.concatenate((X,y), axis=1)
@@ -44,6 +43,22 @@ def get_vectors_cpp(fct, n, h=10, dtype=numpy.float64):
                  x_name=n
                  )
             for n in range(10, n, h)]
+    return ctxs
+
+def get_vectors_nv(fct, n, h=10, dtype=numpy.float64):
+    X, y = make_blobs(n_samples=n, centers=3, n_features=4)
+    X = X.astype(numpy.float64)
+    y = y.astype(numpy.float64)
+    y = y.reshape((n, 1))
+    data = numpy.concatenate((X, y), axis=1)
+    ctxs = [dict(data=data,
+                 random_forest=fct,
+                 max_depth=2,
+                 min_size=2,
+                 n_trees=5,
+                 max_x=2,
+                 x_name=n
+                 ) for n in range(10,n,h)]
     return ctxs
 
 ##############################
@@ -71,18 +86,17 @@ df['fct'] = 'RandomForestClassifier'
 print(df.tail(n=3))
 dfs = [df]
 
-##############################
-# Several cython matmul
-# ++++++++++++++++++
-#
 
-for fct in [create_forest_prime, random_forest]:
-    ctxs = get_vectors_cpp(fct, 100)
+ctxs = get_vectors_cpp(create_forest_prime, 100)
+df = DataFrame(list(measure_time_dim('random_forest(data, n_trees, max_depth, max_x)', ctxs, verbose=1)))
+df['fct'] = create_forest_prime.__name__
+dfs.append(df)
+print(df.tail(n=3))
 
-    df = DataFrame(list(measure_time_dim('random_forest(data, n_trees, max_depth, n_trees)', ctxs, verbose=1)))
-    df['fct'] = fct.__name__
-    dfs.append(df)
-    print(df.tail(n=3))
+ctxs = get_vectors_nv(random_forest, 100)
+df = DataFrame(list(measure_time_dim('random_forest(data, max_depth, min_size, n_trees, max_x)', ctxs, verbose=1)))
+dfs.append(df)
+print(df.tail(n=3))
 
 #############################
 # Let's display the results
