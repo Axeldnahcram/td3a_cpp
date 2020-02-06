@@ -27,6 +27,20 @@
 td3a_cpp: template to use cython and C++ with python
 ====================================================
 
+This module is forked from an Xavier Dupré `project <https://github.com/sdpython/td3a_cpp>`_
+
+Our aim was to add, the same way the ``dot`` module was implemented three different applications:
+
+- *matmul*: a simple comparison of execution in python, cython and numpy of the terms by terms multiplication
+
+- *linreg*: a comparison between different implementation of regularized linear regression
+
+- *random_forest*: a comparison between different implementation of random forest
+
+The different plots are available in the plot folder.
+
+====================================================
+
 .. image:: https://raw.githubusercontent.com/sdpython/td3a_cpp/master/doc/_static/logo.png
     :width: 50
 
